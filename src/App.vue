@@ -17,6 +17,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { NConfigProvider } from 'naive-ui';
   import { computed, onMounted, onUnmounted } from 'vue';
   import { zhCN, dateZhCN, darkTheme } from 'naive-ui';
   import { LockScreen } from '@/components/Lockscreen';
@@ -31,7 +32,6 @@
   const designStore = useDesignSettingStore();
   const isLock = computed(() => useScreenLock.isLocked);
   const lockTime = computed(() => useScreenLock.lockTime);
-
   /**
    * @type import('naive-ui').GlobalThemeOverrides
    */

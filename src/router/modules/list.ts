@@ -46,6 +46,35 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: '/shilist',
+    redirect: '/shilist/list',
+    meta: {
+      title: '案件列表',
+      icon: renderIcon(TableOutlined),
+      sort: 2,
+    },
+    children: [
+      {
+        path: 'list',
+        name: 'shilist',
+        meta: {
+          title: '案件列表',
+        },
+        component: () => import('@/views/shilist/list.vue'),
+      },
+      {
+        path: 'shidetail/:id?',
+        name: 'shidetail',
+        meta: {
+          title: '案件详情',
+          hidden: true,
+          activeMenu: 'shidetail',
+        },
+        component: () => import('@/views/shilist/detail.vue'),
+      },
+    ],
+  },
 ];
 
 export default routes;
