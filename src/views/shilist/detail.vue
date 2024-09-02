@@ -41,7 +41,7 @@
                 </div>
               </n-col>
               <n-col :span="6" class="pt-6 pr-3 ml-auto text-right">
-                <n-button type="info"> 生成监测报告→ </n-button>
+                <n-button type="info" @click="startReveal"> 生成监测报告→ </n-button>
               </n-col>
             </n-row>
             <n-divider style="margin-bottom: 10px" />
@@ -671,7 +671,7 @@
               <div class="pl-4 text-blue-600"> 最终报告 </div>
               <div class="flex items-center gap-4 align-middle justify-items-center">
                 <div class="">
-                  <n-button type="info" strong secondary size="small"> 保存 </n-button>
+                  <n-button type="warning" strong secondary size="small"> 编辑中 </n-button>
                 </div>
                 <div class="text-xs text-gray-400">每2分钟自动保存</div>
                 <div class="flex items-center ml-3 cursor-pointer">
@@ -689,7 +689,7 @@
                       </g>
                     </svg>
                   </n-icon>
-                  <span class="ml-1 text-base text-blue-400">保存</span>
+                  <span class="ml-1 text-base text-blue-400" @click="savefunc">保存</span>
                 </div>
                 <div class="flex items-center ml-3 cursor-pointer">
                   <n-icon size="20" color="#2080f0">
@@ -704,7 +704,7 @@
                       />
                     </svg>
                   </n-icon>
-                  <span class="ml-1 text-base text-blue-400">导出</span>
+                  <span class="ml-1 text-base text-blue-400" @click="exportToWord">导出</span>
                 </div>
                 <div class="flex items-center ml-3 cursor-pointer">
                   <n-icon size="20" color="#2080f0">
@@ -725,7 +725,7 @@
                 </div>
               </div>
             </div>
-            <div class="word_doc">
+            <div class="word_doc" ref="shi">
               <div class="text-center word_doc_title">
                 <div class="text-3xl font-bold text-center">辽宁某堂制药有限公司 </div>
                 <div class="text-lg font-bold text-center">91371300MA3R064567</div>
@@ -733,7 +733,7 @@
               </div>
               <div class="mt-3 text-sm text-right text-gray-400 word_tip"> 日期: 2024-07-01 </div>
               <div class="mt-1 border-t border-gray-300"></div>
-              <div class="word_section">
+              <div class="word_section" v-if="sectionVisibility[0]">
                 <h1 class="mb-4 text-xl font-bold">基础信息</h1>
                 <div class="flex">
                   <div class="flex-none w-20 text-left">公司名:</div>
@@ -750,7 +750,7 @@
                   <div>91371300MA3R064567 </div>
                 </div>
               </div>
-              <div class="word_section">
+              <div class="word_section" v-if="sectionVisibility[1]">
                 <h1 class="mb-4 text-xl font-bold">检查背景</h1>
                 <div class="flex">
                   <div class="flex-none w-20 text-left">检查原因:</div>
@@ -803,7 +803,7 @@
                   </div>
                 </div>
               </div>
-              <div class="word_section">
+              <div class="word_section" v-if="sectionVisibility[2]">
                 <h1 class="mb-4 text-xl font-bold">检查目标</h1>
                 <div class="flex">
                   <div class="flex-none w-20 text-left">主要目标:</div>
@@ -818,7 +818,7 @@
                   </div>
                 </div>
               </div>
-              <div class="word_section">
+              <div class="word_section" v-if="sectionVisibility[3]">
                 <h1 class="mb-4 text-xl font-bold">检查时间</h1>
                 <div class="flex">
                   <div class="flex-none w-20 text-left">检查日期:</div>
@@ -829,7 +829,7 @@
                   <div>3小时</div>
                 </div>
               </div>
-              <div class="word_section">
+              <div class="word_section" v-if="sectionVisibility[4]">
                 <h1 class="mb-4 text-xl font-bold">检查人员</h1>
                 <div class="flex">
                   <div class="flex-none w-20 text-left">检查组成员:</div>
@@ -845,7 +845,7 @@
                   </div>
                 </div>
               </div>
-              <div class="word_section">
+              <div class="word_section" v-if="sectionVisibility[5]">
                 <h1 class="mb-4 text-xl font-bold">检查方式</h1>
                 <div class="flex">
                   <div class="flex-none w-20 text-left">现场检查:</div>
@@ -866,7 +866,7 @@
                   </div>
                 </div>
               </div>
-              <div class="word_section">
+              <div class="word_section" v-if="sectionVisibility[6]">
                 <h1 class="mb-4 text-xl font-bold">检查内容</h1>
                 <div class="flex">
                   <div class="flex-none w-20 text-left">生产过程:</div>
@@ -887,7 +887,7 @@
                   </div>
                 </div>
               </div>
-              <div class="word_section">
+              <div class="word_section" v-if="sectionVisibility[7]">
                 <h1 class="mb-4 text-xl font-bold">检查纪律和注意事项</h1>
                 <div class="flex">
                   <div class="flex-none w-20 text-left">纪律要求:</div>
@@ -902,7 +902,7 @@
                   </div>
                 </div>
               </div>
-              <div class="word_section">
+              <div class="word_section" v-if="sectionVisibility[8]">
                 <h1 class="mb-4 text-xl font-bold">其他要求</h1>
                 <div class="flex">
                   <div class="flex-none w-20 text-left">(一)</div>
@@ -933,6 +933,7 @@
       </n-row>
     </n-layout>
   </n-layout>
+  <n-back-top :listen-to="target" :bottom="120" :visibility-height="10" />
   <n-modal v-model:show="showModal" title="上传附件" preset="dialog" style="width: 30%">
     <n-upload
       action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f"
@@ -948,7 +949,10 @@
   </n-modal>
 </template>
 <script setup>
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, nextTick } from 'vue';
+  import { Document, Packer, Paragraph, TextRun } from 'docx';
+  import { useMessage } from 'naive-ui';
+  const message = useMessage();
   const showModal = ref(false);
   const currentPage = ref(1);
   const pageCount = 2;
@@ -1035,6 +1039,72 @@
   const changeReason2 = ref('人员变化');
   const changeDate2 = ref('2022-7-1');
 
+  const sectionVisibility = ref([true, false, false, false, false, false, false, false, false]);
+  let shi = null;
+
+  // 定义获取 DOM 元素的函数
+  const setupShi = () => {
+    shi = document.querySelector('.word_doc');
+    console.log(shi, 'mounted');
+  };
+
+  // 滚动到底部函数
+  const scrollToBottom = () => {
+    if (shi) {
+      shi.scrollTop = shi.scrollHeight;
+      console.log(shi.scrollTop, '动没动1');
+    }
+  };
+
+  // 递归显示 sections 的函数
+  const revealNextSection = (index = 0) => {
+    console.log(shi?.scrollTop, '动没动');
+    if (index >= sectionVisibility.value.length) return; // 终止条件
+
+    sectionVisibility.value[index] = true; // 显示当前 section
+
+    nextTick(() => {
+      setTimeout(() => {
+        scrollToBottom(); // 滚动到最新内容
+        revealNextSection(index + 1); // 递归显示下一个 section
+      }, 100); // 小延迟来确保 DOM 完全更新后再滚动
+    });
+  };
+  const target = () => shi;
+  const exportToWord = async () => {
+    const content = shi.innerText; // 使用 innerText 获取文本内容
+    console.log(content, 'sssrrrr');
+    const doc = new Document({
+      sections: [
+        {
+          properties: {},
+          children: [
+            new Paragraph({
+              children: [new TextRun(content)],
+            }),
+          ],
+        },
+      ],
+    });
+
+    const blob = await Packer.toBlob(doc);
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'document.docx';
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // 点击按钮后触发的函数
+  const startReveal = () => {
+    setupShi(); // 获取 word_doc 的 DOM 元素
+    revealNextSection(); // 开始显示 sections
+  };
+  const savefunc = () => {
+    console.log('save');
+    message.success("'保存成功'");
+  };
   function handlePrev() {
     if (currentPage.value > 1) {
       currentPage.value--;
@@ -1125,8 +1195,8 @@
     background-color: #ffffff; /* 文档的白色背景 */
     border-radius: 5px;
     overflow-y: scroll;
-    -ms-overflow-style: none; /* 适用于 Internet Explorer 和 Edge */
-    scrollbar-width: none; /* 适用于 Firefox */
+    // -ms-overflow-style: none;
+    // scrollbar-width: none;
   }
   .info_cc {
     height: calc(100vh - 320px);
