@@ -795,7 +795,7 @@
                     <p>此企业关键人员（质量负责人、生产负责人）变更频繁</p>
                   </div>
                 </div>
-                <div class="flex">
+                <div class="flex mt-6">
                   <div class="flex-none w-20 text-left">检查对象:</div>
                   <div>
                     <p>企业名称：辽宁某堂制药有限公司</p>
