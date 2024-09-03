@@ -61,12 +61,16 @@ export function downloadByUrl({
         // window.navigator.msSaveBlob(canvas.msToBlob(),'image.jpg');
         // saveAs(imageDataUrl, '附件');
         canvas.toBlob((blob) => {
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = getFileName(url);
-          link.click();
-          URL.revokeObjectURL(link.href);
-          resolve(true);
+          if (blob) {
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = getFileName(url);
+            link.click();
+            URL.revokeObjectURL(link.href);
+            resolve(true);
+          } else {
+            reject(new Error('Failed to create blob.'));
+          }
         }, 'image/jpeg');
       };
       img.onerror = (e) => reject(e);
