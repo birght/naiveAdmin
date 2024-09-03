@@ -1072,41 +1072,6 @@
   const changedPerson2 = ref('生产负责人变更');
   const changeReason2 = ref('人员变化');
   const changeDate2 = ref('2022-7-1');
-
-  const sectionVisibility = ref([true, false, false, false, false, false, false, false, false]);
-  let shi = null;
-
-  // 定义获取 DOM 元素的函数
-  const setupShi = () => {
-    shi = document.querySelector('.word_doc');
-    console.log(shi, 'mounted');
-  };
-
-  // 滚动到底部函数
-  const scrollToBottom = () => {
-    if (shi) {
-      shi.scrollTop = shi.scrollHeight;
-      console.log(shi.scrollTop, '动没动1');
-    }
-  };
-
-  // 递归显示 sections 的函数
-  const revealNextSection = (index = 0) => {
-    console.log(shi?.scrollTop, '动没动');
-    if (index >= sectionVisibility.value.length) return; // 终止条件
-
-    sectionVisibility.value[index] = true; // 显示当前 section
-
-    nextTick(() => {
-      const randomDelay = Math.floor(Math.random() * 901) + 200; // 生成 100 到 1000 之间的随机数
-      setTimeout(() => {
-        scrollToBottom(); // 滚动到最新内容
-        revealNextSection(index + 1);
-      }, randomDelay);
-    });
-  };
-  const target = () => shi;
-
   const startSchemeTemplate = ref({
     time: '2024-07-01',
     section0: '基础信息',
@@ -1176,6 +1141,40 @@
     imgPath: [150, 150],
     imgPath1: [550, 250],
   });
+  const sectionVisibility = ref([true, false, false, false, false, false, false, false, false]);
+  const shi = ref(null);
+
+  // 定义获取 DOM 元素的函数
+  const setupShi = () => {
+    shi.value = document.querySelector('.word_doc');
+    console.log(shi.value, 'mounted');
+  };
+  // 滚动到底部函数
+  const scrollToBottom = () => {
+    if (shi.value) {
+      shi.value.scrollTop = shi.value.scrollHeight;
+      console.log(shi.value.scrollTop, '动没动1');
+    }
+  };
+  // 递归显示 sections 的函数
+  const revealNextSection = (index = 0) => {
+    console.log(shi.value?.scrollTop, '动没动');
+    if (index >= sectionVisibility.value.length) return; // 终止条件
+
+    sectionVisibility.value[index] = true; // 显示当前 section
+
+    nextTick(() => {
+      const randomDelay = Math.floor(Math.random() * 901) + 200; // 生成 200 到 1100 之间的随机数
+      setTimeout(() => {
+        scrollToBottom(); // 滚动到最新内容
+        revealNextSection(index + 1);
+      }, randomDelay);
+    });
+  };
+
+  // 绑定 DOM 元素的目标函数
+  const target = () => shi.value;
+
   const exportToWord = async () => {
     exportWordImage('../tem.docx', startSchemeTemplate.value, htmlTitle.value, imgSize.value);
   };
@@ -1204,6 +1203,9 @@
       currentPage.value++;
     }
   }
+  onMounted(() => {
+    setupShi();
+  });
 </script>
 <style lang="less" scoped>
   .top {
