@@ -74,15 +74,6 @@
         key: 'actions',
         render(row) {
           return [
-            h(
-              NButton,
-              {
-                strong: true,
-                size: 'small',
-                onClick: () => play(row),
-              },
-              { default: () => '庭审' }
-            ),
             h('div', { style: { width: '10px', display: 'inline-block' } }), // 调整按钮之间的距离
             h(
               NButton,
@@ -91,7 +82,7 @@
                 size: 'small',
                 onClick: () => anotherAction(row),
               },
-              { default: () => '裁决' }
+              { default: () => '检查' }
             ),
           ];
         },

@@ -41,7 +41,7 @@
                 </div>
               </n-col>
               <n-col :span="6" class="pt-6 pr-3 ml-auto text-right">
-                <n-button type="info" @click="startReveal"> 生成监测报告→ </n-button>
+                <n-button type="info" @click="startReveal"> 生成检查方案 </n-button>
               </n-col>
             </n-row>
             <n-divider style="margin-bottom: 10px" />
@@ -1064,10 +1064,11 @@
     sectionVisibility.value[index] = true; // 显示当前 section
 
     nextTick(() => {
+      const randomDelay = Math.floor(Math.random() * 901) + 200; // 生成 100 到 1000 之间的随机数
       setTimeout(() => {
         scrollToBottom(); // 滚动到最新内容
-        revealNextSection(index + 1); // 递归显示下一个 section
-      }, 100); // 小延迟来确保 DOM 完全更新后再滚动
+        revealNextSection(index + 1);
+      }, randomDelay);
     });
   };
   const target = () => shi;
@@ -1195,8 +1196,26 @@
     background-color: #ffffff; /* 文档的白色背景 */
     border-radius: 5px;
     overflow-y: scroll;
-    // -ms-overflow-style: none;
-    // scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+  }
+  /* Webkit-based browsers (Chrome, Safari) */
+  .word_doc::-webkit-scrollbar {
+    width: 4px; /* 滚动条宽度 */
+  }
+
+  .word_doc::-webkit-scrollbar-track {
+    background: #f1f1f1; /* 滚动条轨道背景 */
+    border-radius: 10px;
+  }
+
+  .word_doc::-webkit-scrollbar-thumb {
+    background: #888; /* 滚动条颜色 */
+    border-radius: 2px;
+  }
+
+  .word_doc::-webkit-scrollbar-thumb:hover {
+    background: #555; /* 滚动条悬停颜色 */
   }
   .info_cc {
     height: calc(100vh - 320px);
