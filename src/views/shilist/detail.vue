@@ -46,7 +46,7 @@
             </n-row>
             <n-divider style="margin-bottom: 10px" />
             <n-tabs type="line" animated class="pl-4">
-              <n-tab-pane name="tableve_11" tab="检测事项" class="py-4">
+              <n-tab-pane name="tableve_11" tab="有因检查" class="py-4">
                 <n-tabs type="line" tab-placement="left" animated placement="left">
                   <n-tab-pane name="tableve_21" tab="投诉举报">
                     <div class="m-2 info_cc" v-if="currentPage === 1">
@@ -208,7 +208,7 @@
                     </div>
                   </n-tab-pane>
                   <n-tab-pane name="tableve_22" tab="检验监测">
-                    <div class="m-2" v-if="currentPage === 1">
+                    <div class="m-2 info_cc" v-if="currentPage === 1">
                       <!-- Report Header -->
                       <div class="mb-4 font-semibold shi_label">药品检验报告 报告一</div>
 
@@ -294,7 +294,7 @@
                     </div>
                   </n-tab-pane>
                   <n-tab-pane name="tableve_23" tab="不良反应">
-                    <div class="m-2">
+                    <div class="m-2 info_cc">
                       <!-- Adverse Reaction Header -->
                       <div class="mb-4 font-semibold shi_label">不良反应情况 记录一</div>
 
@@ -350,7 +350,7 @@
                     </div>
                   </n-tab-pane>
                   <n-tab-pane name="tableve_24" tab="申报资料">
-                    <div class="m-2">
+                    <div class="m-2 info_cc">
                       <!-- Submission Material Header -->
                       <div class="mb-4 font-semibold shi_label">企业申报材料情况 材料一</div>
 
@@ -388,7 +388,7 @@
                     </div>
                   </n-tab-pane>
                   <n-tab-pane name="tableve_25" tab="违法违规">
-                    <div class="m-2">
+                    <div class="m-2 info_cc">
                       <!-- Violation Header -->
                       <div class="mb-4 font-semibold shi_label">违法违规情况 记录一</div>
 
@@ -523,7 +523,7 @@
                     </div>
                   </n-tab-pane>
                   <n-tab-pane name="tableve_26" tab="信用记录">
-                    <div class="m-2" v-if="currentPage === 1">
+                    <div class="m-2 info_cc" v-if="currentPage === 1">
                       <!-- Credit Record Header -->
                       <div class="mb-4 font-semibold shi_label">信用记录</div>
 
@@ -569,7 +569,7 @@
                     </div>
                   </n-tab-pane>
                   <n-tab-pane name="tableve_27" tab="人员变更">
-                    <div class="m-2">
+                    <div class="m-2 info_cc" v-if="currentPage === 1">
                       <!-- Personnel Change Header -->
                       <div class="mb-4 font-semibold shi_label"
                         >人员变更情况 关键人员变动记录一</div
@@ -609,7 +609,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="m-2">
+                    <div class="m-2 info_cc" v-if="currentPage === 2">
                       <div class="mb-4 font-semibold shi_label"
                         >人员变更情况 关键人员变动记录二</div
                       >
@@ -658,10 +658,43 @@
                         </div>
                       </div>
                     </div>
+                    <!-- Pagination Component -->
+                    <div class="px-3 mt-4">
+                      <div class="pagination-wrapper">
+                        <n-button @click="handlePrev" :disabled="currentPage === 1" size="small"
+                          >上一页</n-button
+                        >
+                        <span class="current-page">{{ currentPage }}</span>
+                        <n-button
+                          @click="handleNext"
+                          :disabled="currentPage === pageCount"
+                          size="small"
+                          >下一页</n-button
+                        >
+                      </div>
+                    </div>
+                  </n-tab-pane>
+                  <n-tab-pane name="tableve_28" tab="批签隐患">
+                    <div class="p-3 m-4 bg-slate-50"> 无 </div>
+                  </n-tab-pane>
+                  <n-tab-pane name="tableve_29" tab="特殊药品">
+                    <div class="p-3 m-4 bg-slate-50"> 无 </div> </n-tab-pane
+                  ><n-tab-pane name="tableve_30" tab="非法流入">
+                    <div class="p-3 m-4 bg-slate-50"> 无 </div> </n-tab-pane
+                  ><n-tab-pane name="tableve_31" tab="其他情形">
+                    <div class="p-3 m-4 bg-slate-50"> 无 </div>
                   </n-tab-pane>
                 </n-tabs>
               </n-tab-pane>
-              <n-tab-pane name="tableve_12" tab="其他"> 暂无 </n-tab-pane>
+              <n-tab-pane name="tableve_12" tab="许可检查">
+                <div class="info_cc">暂无数据</div>
+              </n-tab-pane>
+              <n-tab-pane name="tableve_13" tab="常规检查">
+                <div class="info_cc">暂无数据</div>
+              </n-tab-pane>
+              <n-tab-pane name="tableve_14" tab="其他检查">
+                <div class="info_cc">暂无数据</div>
+              </n-tab-pane>
             </n-tabs>
           </n-card>
         </n-col>
