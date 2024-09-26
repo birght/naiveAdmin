@@ -102,7 +102,6 @@
         <n-dropdown trigger="hover" @select="avatarSelect" :options="avatarOptions">
           <div class="avatar">
             <n-avatar round :src="websiteConfig.logo">
-             
               <template #icon>
                 <UserOutlined />
               </template>
