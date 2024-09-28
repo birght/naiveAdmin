@@ -117,7 +117,12 @@
   import { CreateOutline } from '@vicons/ionicons5';
   import { NButton, NTag } from 'naive-ui';
   import { h } from 'vue';
-  const pagination = 10;
+  const pagination = {
+    pageSize: 10,
+    pageSizes: [10, 20, 30, 40],
+    showSizePicker: true,
+    showQuickJumper: true,
+  };
   const columns = [
     { title: '企业名称', key: 'tipsWarn' },
     { title: '产品名称', key: 'title' },
