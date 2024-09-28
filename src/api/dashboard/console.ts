@@ -1,6 +1,6 @@
 import { http } from '@/utils/http/axios';
 
-//获取主控台信息
+//获取药械智能审批信息
 export function getConsoleInfo() {
   return http.request({
     url: '/dashboard/console',

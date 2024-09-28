@@ -235,7 +235,7 @@
                     <DashboardOutlined />
                   </n-icon>
                 </span>
-                <span class="text-center text-lx">主控台</span>
+                <span class="text-center text-lx">药械智能审批</span>
               </div>
             </n-card>
             <n-card size="small" class="cursor-pointer project-card-item" hoverable>
@@ -285,7 +285,7 @@
                     <DashboardOutlined />
                   </n-icon>
                 </span>
-                <span class="text-center text-lx">主控台</span>
+                <span class="text-center text-lx">药械智能审批</span>
               </div>
             </n-card>
           </div>

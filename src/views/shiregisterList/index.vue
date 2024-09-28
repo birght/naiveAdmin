@@ -2,7 +2,7 @@
   <n-layout-header>
     <div class="top">
       <div class="text-lg text-white"> NEUSOFT </div>
-      <div class="pl-3 text-lg font-bold text-white indent-5"> 药品再注册智能审批系统 </div>
+      <div class="pl-3 text-lg font-bold text-white indent-5"> 药械智能审批 </div>
       <div class="flex p-2 ml-auto font-bold text-white">
         <n-icon size="20">
           <svg

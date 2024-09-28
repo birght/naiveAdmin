@@ -6,7 +6,8 @@
     @rendered="renderedHandler"
     @error="errorHandler"
   />
-  <vue-office-docx v-else :src="src" @rendered="renderedHandler" @error="errorHandler" />
+  <vue-office-docx v-if="fileType === 'docx'" @rendered="renderedHandler" @error="errorHandler" />
+  <img :src="src" v-if="fileType === 'jpg'" style="width: 100%; height: 100%" />
 </template>
 
 <script setup>

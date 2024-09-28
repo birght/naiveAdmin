@@ -32,7 +32,7 @@ const consoleInfo = {
 };
 
 export default [
-  //主控台 卡片数据
+  //药械智能审批 卡片数据
   {
     url: '/api/dashboard/console',
     timeout: 1000,

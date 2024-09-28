@@ -12,7 +12,7 @@ const menuList = () => {
       path: '/dashboard',
       children: [
         {
-          label: '主控台',
+          label: '药械智能审批',
           key: 'console',
           type: 1,
           subtitle: 'console',

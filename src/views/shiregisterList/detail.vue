@@ -3,8 +3,8 @@
   <n-layout>
     <n-layout-header>
       <div class="top">
-        <div class="text-lg text-white"> NEUSOFT </div>
-        <div class="pl-3 text-lg font-bold text-white indent-5"> 药品再注册智能审批系统 </div>
+        <div class="text-lg text-white"> Neusoft </div>
+        <div class="pl-3 text-lg font-bold text-white indent-5"> 药械智能审批助手 </div>
         <div class="flex p-2 ml-auto font-bold text-white">
           <n-icon size="20">
             <svg
@@ -26,23 +26,37 @@
         </div>
       </div>
     </n-layout-header>
-    <n-layout content-style="padding: 24px 10px 10px 10px;">
+    <n-layout content-style="padding: 24px 10px 10px 10px;" class="mt-4">
       <n-row>
-        <n-col :span="20" class="pl-4">
+        <n-col :span="22" class="pl-4">
           <div class="text-lg font-bold tracking-wider">
-            某企业境内生产再注册<n-tag type="error" class="ml-4" size="small"> 审核不通过 </n-tag>
+            境内生产药品再注册
+            <n-tag type="error" class="ml-4" size="small"> 审核不通过 </n-tag>
+            <n-badge :value="5" :offset="offset">
+              <n-tag type="error" class="ml-2" size="small">不符项(总)</n-tag>
+            </n-badge>
           </div>
-          <n-descriptions bordered label-placement="left" class="mt-3">
-            <n-descriptions-item label="企业名称">辽宁某药品生成企业有限公司</n-descriptions-item>
-            <n-descriptions-item label="申请编码">SQ00000000001</n-descriptions-item>
-            <n-descriptions-item label="统一社会信用代码">91371300MA3R064567</n-descriptions-item>
-            <n-descriptions-item label="原药品批准文号/登记号"
-              >国药准字H201113199</n-descriptions-item
+          <n-descriptions bordered label-placement="left" class="mt-3" :column="2">
+            <n-descriptions-item label="原始编号">YP-IC2205-20120225-0904ZBC</n-descriptions-item>
+            <n-descriptions-item label="受理号">EEPT-20240927R-YP4402211</n-descriptions-item>
+            <n-descriptions-item label="本申请属于">境内生产药品注册</n-descriptions-item>
+            <n-descriptions-item label="药品注册分类">化学药品</n-descriptions-item>
+            <n-descriptions-item label="药品通用名称">注射用克林霉素磷酸酯</n-descriptions-item>
+            <n-descriptions-item label="英文名称/拉丁名称"
+              >Clindamycin Phosphate for Injection</n-descriptions-item
             >
-            <n-descriptions-item label="批准日期">2016-03-19</n-descriptions-item>
+            <n-descriptions-item label="汉语拼音"
+              >Zhusheyong Kelinmeisu Linsuanzhi</n-descriptions-item
+            >
+            <n-descriptions-item label="化学名称"
+              >(2s-反式)-6-(1-甲基-4-丙基-2-吡咯烷碳酸基)-1-流代-甲基-7-氧-6,7,8-三
+              脱氢-L-苏式-a-D-半乳糖吡喃糖苷-2-二氢磷酸酯</n-descriptions-item
+            >
+            <n-descriptions-item label="制剂">中国药典剂型:注射剂</n-descriptions-item>
+            <n-descriptions-item label="规格">按C18H33C1N205S计0.9g</n-descriptions-item>
           </n-descriptions>
         </n-col>
-        <n-col :span="4" class="flex items-end justify-end">
+        <n-col :span="2" class="flex items-end justify-end">
           <n-button type="info" class="mt-auto" @click="outputFileRs">导出核审结果</n-button>
         </n-col>
       </n-row>
@@ -50,19 +64,48 @@
       <n-card>
         <n-collapse>
           <n-collapse-item title="1.药品再注册申请表" name="1">
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
             <template #header>
-              <div class="font-medium">1.药品再注册申请表</div>
+              <div class="font-bold">1.药品再注册申请表</div>
               <n-tag type="error" class="ml-2" size="small">审核不通过</n-tag>
+              <n-badge :value="1" :offset="offset">
+                <n-tag type="error" class="ml-2" size="small">不符项</n-tag>
+              </n-badge>
             </template>
             <template #header-extra>
-              <n-button @click="handleButtonClick('电子申请表', $event)" size="small" type="info"
+              <n-button
+                secondary
+                @click="handleButtonClick('电子申请表', 'pdf', $event)"
+                size="small"
+                type="info"
                 >附件预览</n-button
               >
             </template>
             <n-data-table :columns="columns" :data="data" />
             <n-collapse-item title="主要信息提取">
               <div class="p-4 bg-slate-50">
-                <n-descriptions title="声明" :column="1">
+                <n-descriptions :column="1">
+                  <template #header>
+                    <div style="font-size: 14px; font-weight: 600">声明</div>
+                  </template>
                   <n-descriptions-item>
                     我们保证:
                     <br />
@@ -75,11 +118,17 @@
                     ④以上声明如査有不实之处，我们承担由此导致的一切法律后果。
                   </n-descriptions-item>
                 </n-descriptions>
-                <n-descriptions title="申请事项" :column="2" class="mt-4">
+                <n-descriptions :column="2" class="mt-4">
+                  <template #header>
+                    <div style="font-size: 14px; font-weight: 600">申请事项</div>
+                  </template>
                   <n-descriptions-item label="本申请属于">境内生产药品注册</n-descriptions-item>
                   <n-descriptions-item label="药品注册分类">化学药品无</n-descriptions-item>
                 </n-descriptions>
-                <n-descriptions title="药品情况" :column="1" class="mt-4">
+                <n-descriptions :column="1" class="mt-4">
+                  <template #header>
+                    <div style="font-size: 14px; font-weight: 600">药品情况</div>
+                  </template>
                   <n-descriptions-item label="药品通用名称"
                     >注射用克林霉素磷酸酯</n-descriptions-item
                   >
@@ -106,7 +155,10 @@
                     >活性成分/中药药味/...:以1000瓶量计:克林素磷酸酯900g(按C18H33C1N205S计)辅料:以1000瓶量计:依地酸二钠1.2g、氢氧化钠约57g、活性炭约2.7g</n-descriptions-item
                   >
                 </n-descriptions>
-                <n-descriptions title="申请人及委托研究机构" :column="2" class="mt-4">
+                <n-descriptions :column="2" class="mt-4">
+                  <template #header>
+                    <div style="font-size: 14px; font-weight: 600">申请人及委托研究机构</div>
+                  </template>
                   <n-descriptions-item label="所在省份">山东省</n-descriptions-item>
                   <n-descriptions-item label="申请人类型">生产企业</n-descriptions-item>
                   <n-descriptions-item label="中文名称"
@@ -125,67 +177,428 @@
             </n-collapse-item>
           </n-collapse-item>
           <n-collapse-item title="2.证明性文件" name="2">
-            <div>2.证明性文件</div>
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold">2.证明性文件</div>
+              <n-tag type="error" class="ml-2" size="small">审核不通过</n-tag>
+              <n-badge :value="1" :offset="offset">
+                <n-tag type="error" class="ml-2" size="small">不符项</n-tag>
+              </n-badge>
+            </template>
+            <template #header-extra>
+              <n-button
+                secondary
+                @click="handleButtonClick('药品GMP证书', 'jpg', $event)"
+                size="small"
+                type="info"
+                >附件预览</n-button
+              >
+            </template>
+            <n-data-table :columns="columns" :data="data1" />
+            <n-collapse-item title="主要信息提取">
+              <div class="p-4 bg-slate-50">
+                <n-descriptions :column="2" label-class="font-semibold">
+                  <n-descriptions-item label="企业名称">
+                    山东XXX药业集团股份有限公司 Shandong xxx Pharmaceutical Group Stock CO., Ltd.
+                    Manufacturer
+                  </n-descriptions-item>
+                  <n-descriptions-item label="地址">
+                    山东省 Shandong Province Address
+                  </n-descriptions-item>
+                  <n-descriptions-item label="认证范围">
+                    冻干粉针剂 Lyophilized Powder for Injection (Workshop 1502) Scope of Inspection
+                  </n-descriptions-item>
+                  <n-descriptions-item label="声明">
+                    经审查，符合中华人民共和国《药品生产质量管理规范》要求，特发此证。
+                  </n-descriptions-item>
+                  <n-descriptions-item label="英文声明">
+                    This is to certify that the above-mentioned manufacturer complies with the
+                    requirements of Chinese Good Manufacturing Practices for Pharmaceutical
+                    Products.
+                  </n-descriptions-item>
+                  <n-descriptions-item label="有效期至">
+                    2024年02月10 有效期至日 2024-02-10 This certificate remains valid until
+                  </n-descriptions-item>
+                  <n-descriptions-item label="发证机关">
+                    山东省药品监督管理局 DMINISTRATION Issued By SHANDONG FOOD.DRUG
+                  </n-descriptions-item>
+                  <n-descriptions-item label="发证日期"> 2019-12-11 </n-descriptions-item>
+                  <n-descriptions-item label="国家药品监督管理局">
+                    国家药品监督管理局制 NATIONAL MEDICAL PRODUCTS ADMINISTRATION
+                  </n-descriptions-item>
+                </n-descriptions>
+              </div>
+            </n-collapse-item>
           </n-collapse-item>
           <n-collapse-item
             title="3.五年内生产、销售、抽验情况总结，对产品不合格情况应当作出说明"
             name="3"
           >
-            <div>3.五年内生产、销售、抽验情况总结，对产品不合格情况应当作出说明</div>
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold"
+                >3.五年内生产、销售、抽验情况总结，对产品不合格情况应当作出说明</div
+              >
+              <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
+            </template>
+            <n-data-table :columns="columns" :data="data2" />
           </n-collapse-item>
           <n-collapse-item title="4.五年内药品临床使用情况及不良反应情况总结" name="4">
-            <div>4.五年内药品临床使用情况及不良反应情况总结</div>
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold">4.五年内药品临床使用情况及不良反应情况总结</div>
+              <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
+            </template>
+            <n-data-table :columns="columns" :data="data3" />
           </n-collapse-item>
           <n-collapse-item
             title="5.1药品批准证明文件或者再注册批准文件中要求继续完成工作的，应当提供工作完成后的总结报告，并附相应资料"
             name="5.1"
           >
-            <div
-              >5.1药品批准证明文件或者再注册批准文件中要求继续完成工作的，应当提供工作完成后的总结报告，并附相应资料</div
-            >
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold"
+                >5.1药品批准证明文件或者再注册批准文件中要求继续完成工作的，应当提供工作完成后的总结报告，并附相应资料</div
+              >
+              <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
+            </template>
+            <n-data-table :columns="columns" :data="data4" />
           </n-collapse-item>
           <n-collapse-item
             title="5.2首次申请再注册药品需要进行Ⅳ期临床试验的，应当提供Ⅳ期临床试验总结报告"
             name="5.2"
           >
-            <div>5.2首次申请再注册药品需要进行Ⅳ期临床试验的，应当提供Ⅳ期临床试验总结报告</div>
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold"
+                >5.2首次申请再注册药品需要进行Ⅳ期临床试验的，应当提供Ⅳ期临床试验总结报告</div
+              >
+
+              <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
+            </template>
+            <n-data-table :columns="columns" :data="data5" />
           </n-collapse-item>
           <n-collapse-item
             title="5.3首次申请再注册药品有新药监测期的，应当提供监测情况报告"
             name="5.3"
           >
-            <div>5.3首次申请再注册药品有新药监测期的，应当提供监测情况报告</div>
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold">5.3首次申请再注册药品有新药监测期的，应当提供监测情况报告</div>
+              <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
+            </template>
+            <n-data-table :columns="columns" :data="data6" />
           </n-collapse-item>
           <n-collapse-item
             title="6.提供药品处方、生产工艺、药品标准。凡药品处方、生产工艺、药品标准与上次注册内容有改变的，应当注明具体改变内容，并提供批准证明文件"
             name="6"
           >
-            <div
-              >6.提供药品处方、生产工艺、药品标准。凡药品处方、生产工艺、药品标准与上次注册内容有改变的，应当注明具体改变内容，并提供批准证明文件</div
-            >
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold"
+                >6.提供药品处方、生产工艺、药品标准。凡药品处方、生产工艺、药品标准与上次注册内容有改变的，应当注明具体改变内容，并提供批准证明文件</div
+              >
+              <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
+            </template>
+            <n-data-table :columns="columns" :data="data7" />
           </n-collapse-item>
           <n-collapse-item
             title="7.生产药品制剂所用原料药的来源。改变原料药来源的，应当提供批准证明文件"
             name="7"
           >
-            <div>7.生产药品制剂所用原料药的来源。改变原料药来源的，应当提供批准证明文件</div>
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold"
+                >7.生产药品制剂所用原料药的来源。改变原料药来源的，应当提供批准证明文件</div
+              >
+              <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
+            </template>
+
+            <n-data-table :columns="columns" :data="data8" />
           </n-collapse-item>
           <n-collapse-item title="8.药品最小销售单元的现行包装、标签和说明书实样" name="8">
-            <div>8.药品最小销售单元的现行包装、标签和说明书实样</div>
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold">8.药品最小销售单元的现行包装、标签和说明书实样</div>
+              <n-tag type="error" class="ml-4" size="small"> 审核不通过 </n-tag>
+              <n-badge :value="1" :offset="offset">
+                <n-tag type="error" class="ml-2" size="small">不符项</n-tag>
+              </n-badge>
+            </template>
+            <template #header-extra>
+              <n-button
+                secondary
+                @click="handleButtonClick('说明书', 'pdf', $event)"
+                size="small"
+                type="info"
+                >附件预览</n-button
+              >
+            </template>
+            <n-data-table :columns="columns" :data="data9" />
+            <n-collapse-item title="主要信息提取">
+              <div class="p-4 bg-slate-50">
+                <n-descriptions :column="2" label-class="font-semibold">
+                  <n-descriptions-item label="申请分类"> 再注册申请 </n-descriptions-item>
+                  <n-descriptions-item label="注册分类"> 化学药品 </n-descriptions-item>
+                  <n-descriptions-item label="资料项目编号"> 6 </n-descriptions-item>
+                  <n-descriptions-item label="标题">
+                    注射用克林霉素磷酸酯(0.6g)资料6药品最小销售单元的现行标签和说明书实样
+                  </n-descriptions-item>
+                  <n-descriptions-item label="药品生产企业(加盖公章)">
+                    山东XXX药业集团股份有限公司
+                  </n-descriptions-item>
+                  <n-descriptions-item label="地址"> 山东省 </n-descriptions-item>
+                  <n-descriptions-item label="联系人姓名"> ABC </n-descriptions-item>
+                </n-descriptions>
+              </div>
+            </n-collapse-item>
           </n-collapse-item>
           <n-collapse-item title="9.《法人授权委托书》" name="9">
-            <div>9.《法人授权委托书》</div>
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold">9.《法人授权委托书》</div>
+              <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
+            </template>
+            <n-data-table :columns="columns" :data="data10" />
           </n-collapse-item>
           <n-collapse-item title="10.申请材料真实性承诺书" name="10">
-            <div>10.申请材料真实性承诺书</div>
+            <template #arrow>
+              <n-icon color="#092a80">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    opacity=".3"
+                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </n-icon>
+            </template>
+            <template #header>
+              <div class="font-bold">10..申请材料真实性承诺书</div>
+              <n-tag type="error" class="ml-4" size="small"> 审核不通过 </n-tag>
+              <n-badge :value="2" :offset="offset">
+                <n-tag type="error" class="ml-2" size="small">不符项</n-tag>
+              </n-badge>
+            </template>
+            <template #header-extra>
+              <n-button
+                secondary
+                @click="handleButtonClick('材料真实性保证书', 'pdf', $event)"
+                size="small"
+                type="info"
+                >附件预览</n-button
+              >
+            </template>
+            <n-data-table :columns="columns" :data="data11" />
+            <n-collapse-item title="主要信息提取">
+              <div class="p-4 bg-slate-50">
+                <n-descriptions :column="1" label-class="font-semibold"
+                  >>
+                  <n-descriptions-item label="山东省药品监督管理局">
+                    本单位保证，本次申请遵守国家法律法规规章和有关规定，向你局提交的所有资料均真实、合法、有效。申请资料的电子版与纸质版完全一致，并具有同等法律效力。如有不实之处，本单位愿负相应的法律责任，并承担由此产生的一切后果。
+                  </n-descriptions-item>
+                  <n-descriptions-item label="法定代表人（签字）"> 未提供 </n-descriptions-item>
+                  <n-descriptions-item label="申 报 单 位（盖章）">
+                    山东ABC有限公司
+                  </n-descriptions-item>
+                </n-descriptions>
+              </div>
+            </n-collapse-item>
           </n-collapse-item>
         </n-collapse>
       </n-card>
     </n-layout>
-    <!-- <n-button @click="showModal = true"> 来吧 </n-button> -->
     <n-modal v-model:show="showModal" style="width: 90%" preset="card" fullscreen>
       <n-card>
-        <PreviewFile :src="pdfSrc" style="height: 80vh" :fileType="fileTypepdf" />
+        <PreviewFile :src="pdfSrc" style="height: 80vh" :fileType="fileTypeParent" />
       </n-card>
     </n-modal>
   </n-layout>
@@ -196,9 +609,7 @@
   import { PreviewFile } from '@/components/PreviewFile';
   import { NButton } from 'naive-ui';
   import type { DataTableColumns } from 'naive-ui';
-  // const src = '/tem.docx';
-  // const fileType = 'docx';
-  const fileTypepdf = 'pdf';
+  let fileTypeParent = 'pdf';
   let pdfSrc = '/说明书.pdf';
   const showModal = ref(false);
   interface Song {
@@ -206,22 +617,12 @@
     result: string;
     description: string;
   }
+  const offset = [6, -2] as const;
   function createColumns({}: { play: (row: Song) => void }): DataTableColumns<Song> {
     return [
       {
         title: '材料核查标准',
         key: 'standard',
-        render(row) {
-          return h(
-            'span',
-            {
-              style: {
-                color: row.result === '审核不通过' ? 'red' : 'inherit',
-              },
-            },
-            row.standard
-          );
-        },
       },
       {
         title: '核查结果',
@@ -246,6 +647,17 @@
       {
         title: '结果说明',
         key: 'description',
+        render(row) {
+          return h(
+            'span',
+            {
+              style: {
+                color: row.result === '审核不通过' ? 'red' : 'green',
+              },
+            },
+            row.description
+          );
+        },
       },
     ];
   }
@@ -280,13 +692,231 @@
       description: '材料完备，格式符合要求',
     },
   ];
+  const data1: Song[] = [
+    {
+      standard: '申请人所申请许可内容是否符合相应申请条件',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人所提交的申请材料是否符合依法需提交的全部材料',
+      result: '审核不通过',
+      description: '合法有效性校验不通过,药品GMP证书过期',
+    },
+    {
+      standard: '申请内容是否符合法定权限',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人主体是否合法有效',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+  ];
+  const data2: Song[] = [
+    {
+      standard: '申请内容是否符合法定权限',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人主体是否合法有效',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人所申请许可内容是否符合相应申请条件',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人所提交的申请材料是否符合依法需提交的全部材料',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+  ];
+  const data3: Song[] = [
+    {
+      standard: '申请人所申请许可内容是否符合相应申请条件',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请内容是否符合法定权限',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人所提交的申请材料是否符合依法需提交的全部材料',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人主体是否合法有效',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+  ];
+  const data4: Song[] = [
+    {
+      standard: '申请内容是否符合法定权限',
+      result: '审核通过',
+      description: '未提供材料附件',
+    },
+    {
+      standard: '申请人所提交的申请材料是否符合依法需提交的全部材料',
+      result: '审核通过',
+      description: '未提供材料附件',
+    },
+    {
+      standard: '申请人主体是否合法有效',
+      result: '审核通过',
+      description: '未提供材料附件',
+    },
+    {
+      standard: '申请人所申请许可内容是否符合相应申请条件',
+      result: '审核通过',
+      description: '未提供材料附件',
+    },
+  ];
+  const data5: Song[] = [
+    {
+      standard: '申请人所申请许可内容是否符合相应申请条件',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人所提交的申请材料是否符合依法需提交的全部材料',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人主体是否合法有效',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请内容是否符合法定权限',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+  ];
+  const data6: Song[] = [
+    {
+      standard: '申请人所申请许可内容是否符合相应申请条件',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人所提交的申请材料是否符合依法需提交的全部材料',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人主体是否合法有效',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请内容是否符合法定权限',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+  ];
+  const data7: Song[] = [
+    {
+      standard: '申请人所申请许可内容是否符合相应申请条件',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人所提交的申请材料是否符合依法需提交的全部材料',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请内容是否符合法定权限',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人主体是否合法有效',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+  ];
+  const data8: Song[] = [
+    {
+      standard: '申请人所申请许可内容是否符合相应申请条件',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人主体是否合法有效',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人所提交的申请材料是否符合依法需提交的全部材料',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请内容是否符合法定权限',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+  ];
+  const data9: Song[] = [
+    {
+      standard: '申请人所申请许可内容是否符合相应申请条件',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请人所提交的申请材料是否符合依法需提交的全部材料',
+      result: '审核不通过',
+      description: '一致性审核不通过，说明书中规格与申报规格不一致',
+    },
+    {
+      standard: '申请人主体是否合法有效',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+    {
+      standard: '申请内容是否符合法定权限',
+      result: '审核通过',
+      description: '材料完备，格式符合要求',
+    },
+  ];
+  const data10: Song[] = [
+    {
+      standard: '是否提供材料',
+      result: '审核通过',
+      description: '未提供材料附件',
+    },
+  ];
+  const data11: Song[] = [
+    {
+      standard: '保证书申报信息一致性',
+      result: '审核不通过',
+      description: '合法有效性校验不通过，保证书未加盖公章',
+    },
+    {
+      standard: '申请人主体信息一致性',
+      result: '审核不通过',
+      description: '申请人主体信息一致性审核不通过，保证书中企业名称与申报企业不一致',
+    },
+  ];
   const columns = createColumns({ play });
   function play(row) {
     console.log('Playing:', row);
   }
-  function handleButtonClick(param, event) {
+  function handleButtonClick(param1, filetype, event) {
     event.stopPropagation();
-    pdfSrc = '/' + param + '.pdf';
+    pdfSrc = '/' + param1 + '.' + filetype;
+    fileTypeParent = filetype;
     showModal.value = true;
   }
 </script>
@@ -297,7 +927,7 @@
     padding: 0rem 0.75rem;
     align-items: center;
     align-self: stretch;
-    background: #092a80;
+    background: #6e82f7;
   }
   .shi_label {
     position: relative;

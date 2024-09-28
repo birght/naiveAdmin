@@ -31,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'console',
         name: `${routeName}_console`,
         meta: {
-          title: '主控台',
+          title: '药械智能审批',
           permissions: ['dashboard_console'],
           affix: true,
         },
