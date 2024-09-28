@@ -3,7 +3,7 @@
     <n-layout-header>
       <div class="top">
         <div class="text-xl font-bold"> Neusoft </div>
-        <div class="pl-2 text-base"> 药械智能审批助手 </div>
+        <div class="pl-2 text-base"> 药械智能审核助手 </div>
         <div class="flex p-2 ml-auto font-bold">
           <n-icon size="20">
             <svg
@@ -100,14 +100,19 @@
           </n-card>
         </n-col>
       </n-row>
-      <n-data-table
-        :columns="columns"
-        :data="data"
-        class="mt-4"
-        :pagination="pagination"
-        bordered
-        bottom-bordered
-      />
+      <n-spin :show="show">
+        <n-data-table
+          :columns="columns"
+          :data="data"
+          class="mt-4"
+          :pagination="pagination"
+          bordered
+          bottom-bordered
+        />
+        <template #description>
+          <div id="typewriter" ref="typewriter"></div>
+        </template>
+      </n-spin>
     </n-layout-content>
   </n-layout>
 </template>
@@ -116,13 +121,17 @@
   import { useRouter } from 'vue-router';
   import { CreateOutline } from '@vicons/ionicons5';
   import { NButton, NTag } from 'naive-ui';
-  import { h } from 'vue';
+  import { h, nextTick, ref } from 'vue';
+  import Typewriter from 'typewriter-effect/dist/core';
+
+  const show = ref(false);
   const pagination = {
     pageSize: 10,
     pageSizes: [10, 20, 30, 40],
     showSizePicker: true,
     showQuickJumper: true,
   };
+
   const columns = [
     { title: '企业名称', key: 'tipsWarn' },
     { title: '产品名称', key: 'title' },
@@ -170,13 +179,14 @@
                 type: 'info',
                 onClick: () => anotherAction(row),
               },
-              { default: () => '智审结果' }
+              { default: () => '智能审核' }
             ),
           ]
         );
       },
     },
   ];
+
   interface tableItem {
     no: number;
     title: string;
@@ -236,10 +246,44 @@
       tipsWarn: '中兴制药有限公司',
     },
   ];
+
   const router = useRouter();
+
   function anotherAction(row) {
+    show.value = true;
     console.log(row, '22');
-    router.push({ name: 'shidetail' });
+    nextTick(() => {
+      const app = document.querySelector('#typewriter');
+      console.log(app); // 确保这里不再是 null
+      if (app) {
+        let typewriter = new Typewriter(app, {
+          delay: 15,
+        });
+        typewriter
+          .typeString('<div><strong>执行药械智能审核助手</strong></div>')
+          .pauseFor(1200)
+          .typeString('<span style="font-size:14px">开启内容核对</span> ')
+          .typeString('<strong>药品再注册申请表</strong>')
+          .deleteChars(8)
+          .typeString('<strong>证明性文件</strong>')
+          .deleteChars(5)
+          .typeString('<strong>五年内生产、销售..</strong>')
+          .deleteChars(10)
+          .typeString('<strong>五年内药品临床使用情况</strong>')
+          .deleteChars(12)
+          .typeString('<strong>生产药品制剂所用...</strong>')
+          .deleteChars(12)
+          .typeString('<strong>申请材料真实性承诺书</strong>')
+          .deleteChars(18)
+          .pauseFor(600)
+          .typeString('<strong> <span style="color: #27ae60;">完成检查..</span></strong>')
+          .pauseFor(1200)
+          .callFunction(() => {
+            router.push({ name: 'shidetail' });
+          })
+          .start();
+      }
+    });
   }
 </script>
 
@@ -251,5 +295,13 @@
     align-items: center;
     align-self: stretch;
     // background: #6e82f7;
+  }
+  #typewriter {
+    padding: 40px;
+    width: 600px;
+    height: 300px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 20px;
   }
 </style>

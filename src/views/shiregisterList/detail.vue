@@ -4,7 +4,7 @@
     <n-layout-header>
       <div class="top">
         <div class="text-xl font-bold"> Neusoft </div>
-        <div class="pl-2 text-base"> 药械智能审批助手 </div>
+        <div class="pl-2 text-base"> 药械智能审核助手 </div>
         <div class="flex p-2 ml-auto font-bold">
           <n-icon size="20">
             <svg
@@ -57,7 +57,7 @@
           </n-descriptions>
         </n-col>
         <n-col :span="2" class="flex items-end justify-end">
-          <n-button type="info" class="mt-auto" @click="outputFileRs">导出核审结果</n-button>
+          <n-button type="info" class="mt-auto" @click="outputFileRs">导出审核结果</n-button>
         </n-col>
       </n-row>
       <n-divider />
