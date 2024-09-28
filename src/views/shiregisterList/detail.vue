@@ -3,9 +3,9 @@
   <n-layout>
     <n-layout-header>
       <div class="top">
-        <div class="text-lg text-white"> Neusoft </div>
-        <div class="pl-3 text-lg font-bold text-white indent-5"> 药械智能审批助手 </div>
-        <div class="flex p-2 ml-auto font-bold text-white">
+        <div class="text-xl font-bold"> Neusoft </div>
+        <div class="pl-2 text-base"> 药械智能审批助手 </div>
+        <div class="flex p-2 ml-auto font-bold">
           <n-icon size="20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -927,7 +927,7 @@
     padding: 0rem 0.75rem;
     align-items: center;
     align-self: stretch;
-    background: #6e82f7;
+    // background: #6e82f7;
   }
   .shi_label {
     position: relative;
