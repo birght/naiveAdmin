@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import { Layout } from '@/router/constant';
+// import { Layout } from '@/router/constant';
 import { DashboardOutlined } from '@vicons/antd';
 import { renderIcon } from '@/utils/index';
 
@@ -35,7 +35,7 @@ const routes: Array<RouteRecordRaw> = [
           permissions: ['dashboard_console'],
           affix: true,
         },
-        component: () => import('@/views/shilist/list.vue'),
+        component: () => import('@/views/shiregisterList/list.vue'),
       },
       // {
       //   path: 'monitor',
