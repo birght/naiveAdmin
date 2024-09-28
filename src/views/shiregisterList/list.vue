@@ -120,7 +120,7 @@
   const pagination = 10;
   const columns = [
     { title: '企业名称', key: 'tipsWarn' },
-    { title: '药品名称', key: 'title' },
+    { title: '产品名称', key: 'title' },
     { title: '待办事项', key: 'dbr' },
     { title: '类别', key: 'companyDes' },
     { title: '提交时间', key: 'ccDate' },
