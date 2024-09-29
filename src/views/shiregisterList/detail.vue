@@ -5,25 +5,6 @@
       <div class="top">
         <!-- <div class="text-xl font-bold"> Neusoft </div> -->
         <div class="pl-2 text-base"> 药械智能审核助手 </div>
-        <div class="flex p-2 ml-auto font-bold">
-          <n-icon size="20">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              viewBox="0 0 32 32"
-            >
-              <path
-                d="M16 8a5 5 0 1 0 5 5a5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3a3.003 3.003 0 0 1-3 3z"
-                fill="currentColor"
-              />
-              <path
-                d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2zm-6 24.377V25a3.003 3.003 0 0 1 3-3h6a3.003 3.003 0 0 1 3 3v1.377a11.899 11.899 0 0 1-12 0zm13.992-1.451A5.002 5.002 0 0 0 19 20h-6a5.002 5.002 0 0 0-4.992 4.926a12 12 0 1 1 15.985 0z"
-                fill="currentColor"
-              />
-            </svg>
-          </n-icon>
-          <div> 下午好，用户 </div>
-        </div>
       </div>
     </n-layout-header>
     <n-layout content-style="padding: 24px 10px 10px 10px;" class="mt-4">
@@ -37,9 +18,9 @@
             </n-badge>
           </div>
           <n-descriptions bordered label-placement="left" class="mt-3" :column="2">
-            <n-descriptions-item label="原始编号">YP-IC2205-20120225-0904ZBC</n-descriptions-item>
-            <n-descriptions-item label="受理号">EEPT-20240927R-YP4402211</n-descriptions-item>
-            <n-descriptions-item label="本申请属于">境内生产药品注册</n-descriptions-item>
+            <n-descriptions-item label="申请人">XXX药品有限公司</n-descriptions-item>
+            <n-descriptions-item label="受理号">SH300350060063</n-descriptions-item>
+            <n-descriptions-item label="本申请属于">境内生产药品再注册</n-descriptions-item>
             <n-descriptions-item label="药品注册分类">化学药品</n-descriptions-item>
             <n-descriptions-item label="药品通用名称">注射用克林霉素磷酸酯</n-descriptions-item>
             <n-descriptions-item label="英文名称/拉丁名称"
@@ -122,7 +103,7 @@
                   <template #header>
                     <div style="font-size: 14px; font-weight: 600">申请事项</div>
                   </template>
-                  <n-descriptions-item label="本申请属于">境内生产药品注册</n-descriptions-item>
+                  <n-descriptions-item label="本申请属于">境内生产药品再注册</n-descriptions-item>
                   <n-descriptions-item label="药品注册分类">化学药品无</n-descriptions-item>
                 </n-descriptions>
                 <n-descriptions :column="1" class="mt-4">
@@ -899,14 +880,14 @@
   ];
   const data11: Song[] = [
     {
-      standard: '保证书申报信息一致性',
+      standard: '承诺书申报信息一致性',
       result: '审核不通过',
-      description: '合法有效性校验不通过，保证书未加盖公章',
+      description: '合法有效性校验不通过，承诺书未加盖公章',
     },
     {
       standard: '申请人主体信息一致性',
       result: '审核不通过',
-      description: '申请人主体信息一致性审核不通过，保证书中企业名称与申报企业不一致',
+      description: '申请人主体信息一致性审核不通过，承诺书中企业名称与申报企业不一致',
     },
   ];
   const columns = createColumns({ play });

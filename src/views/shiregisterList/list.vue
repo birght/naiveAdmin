@@ -4,25 +4,6 @@
       <div class="top">
         <!-- <div class="text-xl font-bold"> Neusoft </div> -->
         <div class="pl-2 text-base"> 药械智能审核助手 </div>
-        <div class="flex p-2 ml-auto font-bold">
-          <n-icon size="20">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              viewBox="0 0 32 32"
-            >
-              <path
-                d="M16 8a5 5 0 1 0 5 5a5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3a3.003 3.003 0 0 1-3 3z"
-                fill="currentColor"
-              />
-              <path
-                d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2zm-6 24.377V25a3.003 3.003 0 0 1 3-3h6a3.003 3.003 0 0 1 3 3v1.377a11.899 11.899 0 0 1-12 0zm13.992-1.451A5.002 5.002 0 0 0 19 20h-6a5.002 5.002 0 0 0-4.992 4.926a12 12 0 1 1 15.985 0z"
-                fill="currentColor"
-              />
-            </svg>
-          </n-icon>
-          <div> 下午好，用户 </div>
-        </div>
       </div>
     </n-layout-header>
     <n-layout-content content-style="padding: 12px;" class="mt-4">
@@ -133,13 +114,15 @@
   };
 
   const columns = [
-    { title: '企业名称', key: 'tipsWarn' },
-    { title: '产品名称', key: 'title' },
-    { title: '待办事项', key: 'dbr' },
+    { title: '申报号', key: 'process' },
+    { title: '申请人', key: 'tipsWarn' },
+    { title: '办件名称', key: 'title' },
+    // { title: '待办事项', key: 'dbr' },
     { title: '类别', key: 'companyDes' },
-    { title: '提交时间', key: 'ccDate' },
+    { title: '申报时间', key: 'ccDate' },
+    { title: '受理时间', key: 'ssDate' },
     {
-      title: '超时状态',
+      title: '超期状态',
       key: 'xxm',
       render(row) {
         return h(
@@ -198,6 +181,7 @@
     process?: string;
     companyDes?: string;
     ccDate?: string;
+    ssDate?: string;
     tipsInfo?: string;
     tipsWarn?: string;
   }
@@ -205,45 +189,48 @@
   const data: tableItem[] = [
     {
       no: 1,
-      title: '注射用克林霉素磷酸酯0.9g',
+      title: '境内生产药品再注册',
       xxm: '正常',
       dbr: '再注册',
       address: '受理审查',
       level: 'error',
       levelMsg: '高风险',
-      process: '未完成',
+      process: 'SH300350060063',
       companyDes: '药品',
-      ccDate: '2024年9月27日 17点51分',
+      ccDate: '2024年9月27日 15点51分',
+      ssDate: '2024年9月27日 16点32分',
       tipsInfo: '药品监督检查缺陷预警',
-      tipsWarn: '禾特健药品有限公司',
+      tipsWarn: 'XXX药品有限公司',
     },
     {
       no: 2,
-      title: 'GE Healthcare LOGIQ E9 with XDclear 2.0-超声诊断仪',
+      title: '医疗机构配制制剂品种再注册',
       xxm: '正常',
       dbr: '注销',
       address: '受理审查',
       level: 'warning',
       levelMsg: '中风险',
-      process: '进行中',
-      companyDes: '医疗器械',
-      ccDate: '2024年9月27日 08点35分',
+      process: 'SH300350060255',
+      companyDes: '药品',
+      ccDate: '2024年9月27日 10点35分',
+      ssDate: '2024年9月27日 11点02分',
       tipsInfo: '产品抽检不合格',
-      tipsWarn: '同北医药有限公司',
+      tipsWarn: 'XXXX附属第一医院',
     },
     {
       no: 2,
-      title: 'Estée Lauder 小棕瓶精华液 (Advanced Night Repair Synchronized Recovery Complex II)',
+      title: '《放射性药品使用许可证》变更许可',
       xxm: '正常',
       dbr: '变更',
       address: '受理审查',
       level: 'warning',
       levelMsg: '中风险',
-      process: '进行中',
-      companyDes: '化妆品',
-      ccDate: '2024年9月27日 12点11分',
+      process: 'SH300350060211',
+      companyDes: '药品',
+      ccDate: '2024年9月27日 10点11分',
+      ssDate: '2024年9月27日 11点12分',
       tipsInfo: '产品抽检不合格',
-      tipsWarn: '中兴制药有限公司',
+      tipsWarn: 'XXXX制药有限公司',
     },
   ];
 

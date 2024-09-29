@@ -3,7 +3,7 @@
     <div class="view-account-header"></div>
     <div class="view-account-container">
       <div class="view-account-top">
-        <h2 class="text-2xl view-account-top-desc"> 药品检查方案智能助手系统 </h2>
+        <h2 class="text-2xl view-account-top-desc"> 药械智能审批助手 </h2>
       </div>
       <div class="view-account-form">
         <n-form
