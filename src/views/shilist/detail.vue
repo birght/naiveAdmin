@@ -31,7 +31,7 @@
           <n-card class="mt-2 shadow-lg" :content-style="{ padding: '0px' }">
             <n-row>
               <n-col :span="18" class="pl-4">
-                <div class="text-lg font-bold">福建某堂制药有限公司 </div>
+                <div class="text-lg font-bold">福建省XXX制药有限公司 </div>
                 <div class="mt-3 text-sm text-neutral-400">91371300MA3R064567</div>
                 <div class="text-neutral-400">
                   <span class="mt-3 text-sm text-neutral-400">法定代表人:</span>
@@ -407,7 +407,7 @@
                           <label class="block mb-2 font-medium">行政相对人名称</label>
                           <n-input
                             v-model:value="relativePersonName1"
-                            placeholder="福建某堂制药有限公司"
+                            placeholder="福建省XXX制药有限公司"
                           />
                         </div>
 
@@ -474,7 +474,7 @@
                           <label class="block mb-2 font-medium">行政相对人名称</label>
                           <n-input
                             v-model:value="relativePersonName2"
-                            placeholder="福建某堂制药有限公司"
+                            placeholder="福建省XXX制药有限公司"
                           />
                         </div>
 
@@ -760,11 +760,11 @@
             </div>
             <div class="word_doc" ref="shi">
               <div class="text-center word_doc_title">
-                <div class="text-3xl font-bold text-center">福建某堂制药有限公司 </div>
+                <div class="text-3xl font-bold text-center">福建省XXX制药有限公司 </div>
                 <div class="text-lg font-bold text-center">91371300MA3R064567</div>
                 <div class="text-lg font-bold text-center">(最终报告)</div>
               </div>
-              <div class="mt-3 text-sm text-right text-gray-400 word_tip"> 日期: 2024-07-01 </div>
+              <div class="mt-3 text-sm text-right text-gray-400 word_tip"> 日期: 2024-09-26 </div>
               <div class="mt-1 border-t border-gray-300"></div>
               <div class="word_section" v-if="sectionVisibility[0]">
                 <h1 class="mb-4 text-xl font-bold">{{ startSchemeTemplate.section0 }}</h1>
@@ -833,7 +833,7 @@
                 <div class="flex mt-6">
                   <div class="flex-none w-20 text-left">检查对象:</div>
                   <div>
-                    <p>企业名称：福建某堂制药有限公司</p>
+                    <p>企业名称：福建省XXX制药有限公司</p>
                     <p>企业地址：福建省高新区工业三路</p>
                   </div>
                 </div>
@@ -1035,7 +1035,7 @@
   // 违法违规
 
   const checkedValue1 = ref('使用');
-  const relativePersonName1 = ref('福建某堂制药有限公司');
+  const relativePersonName1 = ref('福建省XXX制药有限公司');
   const caseName1 = ref('严重违反《药品生产质量管理规范》');
   const illegalFact1 = ref(
     '当事人2020年3月至2021年7月期间生产维儿康洗液和维妇康洗液过程中，生产过程控制、质量控制的记录和数据不真实'
@@ -1046,7 +1046,7 @@
   const punishmentContent1 = ref('对此公司处50万元罚款；责令此公司停产1个月；');
   const punishmentDate1 = ref('2024-7-1');
 
-  const relativePersonName2 = ref('福建某堂制药有限公司');
+  const relativePersonName2 = ref('福建省XXX制药有限公司');
   const caseName2 = ref('生产销售不符合国家标准的化妆品');
   const illegalFact2 = ref(
     '2021 年 9 月 10 日，本局在上海市杨浦区共青路 486 号对当事人生产的九维鱼肝油（批号：201001；规格：复方；包装规 格：500 克/瓶）进行抽样，经上海市食品药品检验研究院检验，该批药品【性状】项和【含量测定】项下维生素A含量均不符 合规定（检验依据：国家药品监督管理局国家药品标准（试行）（地标升国标）第十三册 WS-10001-（HD-1201）-2002）。'
@@ -1073,13 +1073,13 @@
   const changeReason2 = ref('人员变化');
   const changeDate2 = ref('2022-7-1');
   const startSchemeTemplate = ref({
-    time: '2024-07-01',
+    time: '2024-09-26',
     section0: '基础信息',
     baselable1: '公司名',
-    baset1: '福建某堂制药有限公司',
+    baset1: '福建省XXX制药有限公司',
     baselable2: '简介',
     baset2:
-      '福建某堂制药有限公司位于福建省高新区工业三路，生产范围为眼用全氟丙烷气体、人工蛋白等。根据《药品生产监督管理办法》的规定，结合《2024年福建省药品上市后生产监管工作计划》法规要求，决定对其实施上市后药GMP符合性检查及有因检查。',
+      '福建省XXX制药有限公司位于福建省高新区工业三路，生产范围为眼用全氟丙烷气体、人工蛋白等。根据《药品生产监督管理办法》的规定，结合《2024年福建省药品上市后生产监管工作计划》法规要求，决定对其实施上市后药GMP符合性检查及有因检查。',
     baselable3: '检查编号',
     baset3: '91371300MA3R064567',
     section1: '检查背景',
@@ -1106,7 +1106,7 @@
 7、人员变更
 此企业关键人员（质量负责人、生产负责人）变更频繁`,
     checklabel2: '检查对象',
-    chekbg2: `企业名称：福建某堂制药有限公司,企业地址：福建省高新区工业三路`,
+    chekbg2: `企业名称：福建省XXX制药有限公司,企业地址：福建省高新区工业三路`,
     section2: '检查目标',
     mainObjective: '明确本次检查的主要目标，如核实药品生产过程、质量控制措施、合规性等。',
     secondaryObjective: '列出次要目标，如评估药品不良反应监测系统、检查药品储存条件等。',
