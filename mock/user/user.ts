@@ -15,7 +15,7 @@ const adminInfo = {
   token,
   permissions: [
     {
-      label: '主控台',
+      label: '药械智能审批',
       value: 'dashboard_console',
     },
     {

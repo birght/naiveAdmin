@@ -16,7 +16,7 @@ const menusList = [
         name: 'dashboard_console',
         component: '/dashboard/console/console',
         meta: {
-          title: '主控台',
+          title: '药械智能审批',
         },
       },
       {

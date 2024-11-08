@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '案件列表',
         },
-        component: () => import('@/views/shilist/list.vue'),
+        component: () => import('@/views/shiregisterList/list.vue'),
       },
       {
         path: 'shidetail/:id?',
@@ -39,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
           hidden: true,
           activeMenu: 'shidetail',
         },
-        component: () => import('@/views/shilist/detail.vue'),
+        component: () => import('@/views/shiregisterList/detail.vue'),
       },
     ],
   },

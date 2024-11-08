@@ -3,7 +3,7 @@
     <div class="n-layout-page-header">
       <n-card :bordered="false" title="工作台">
         <n-grid cols="2 s:1 m:1 l:2 xl:2 2xl:2" responsive="screen">
-          <n-gi>
+          <n-gird>
             <div class="flex items-center">
               <div>
                 <n-avatar circle :size="64" :src="schoolboy" />
@@ -13,8 +13,8 @@
                 <p class="px-4 text-gray-400">今日阴转大雨，15℃ - 25℃，出门记得带伞哦。</p>
               </div>
             </div>
-          </n-gi>
-          <n-gi>
+          </n-gird>
+          <n-gird>
             <div class="flex justify-end w-full">
               <div class="flex flex-col justify-center flex-1 text-right">
                 <span class="text-secondary">项目数</span>
@@ -29,12 +29,12 @@
                 <span class="text-2xl">35</span>
               </div>
             </div>
-          </n-gi>
+          </n-gird>
         </n-grid>
       </n-card>
     </div>
     <n-grid class="mt-4" cols="2 s:1 m:1 l:2 xl:2 2xl:2" responsive="screen" :x-gap="12" :y-gap="9">
-      <n-gi>
+      <n-gird>
         <n-card
           :segmented="{ content: true }"
           content-style="padding: 0;"
@@ -218,8 +218,8 @@
             </n-list-item>
           </n-list>
         </n-card>
-      </n-gi>
-      <n-gi>
+      </n-gird>
+      <n-gird>
         <n-card
           :segmented="{ content: true }"
           content-style="padding: 0;"
@@ -235,7 +235,7 @@
                     <DashboardOutlined />
                   </n-icon>
                 </span>
-                <span class="text-center text-lx">主控台</span>
+                <span class="text-center text-lx">药械智能审批</span>
               </div>
             </n-card>
             <n-card size="small" class="cursor-pointer project-card-item" hoverable>
@@ -285,7 +285,7 @@
                     <DashboardOutlined />
                   </n-icon>
                 </span>
-                <span class="text-center text-lx">主控台</span>
+                <span class="text-center text-lx">药械智能审批</span>
               </div>
             </n-card>
           </div>
@@ -293,7 +293,7 @@
         <n-card :segmented="{ content: true }" :bordered="false" size="small" class="mt-4">
           <img src="~@/assets/images/Business.svg" class="w-full" />
         </n-card>
-      </n-gi>
+      </n-gird>
     </n-grid>
   </div>
 </template>
