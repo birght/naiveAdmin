@@ -1,5 +1,5 @@
 import { App } from 'vue';
-import { createRouter, createWebHistory, RouteRecordRaw, createWebHashHistory } from 'vue-router';
+import { createRouter, RouteRecordRaw, createWebHashHistory } from 'vue-router';
 import { RedirectRoute } from '@/router/base';
 import { PageEnum } from '@/enums/pageEnum';
 import { createRouterGuards } from './guards';

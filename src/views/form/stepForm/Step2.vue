@@ -1,72 +1,75 @@
 <template>
-  <n-form
-    :label-width="90"
-    :model="formValue"
-    :rules="rules"
-    label-placement="left"
-    ref="form2Ref"
-    style="max-width: 500px; margin: 40px auto 0 80px"
-  >
-    <n-form-item label="付款账户" path="myAccount">
-      <span>NaiveUiAdmin@163.com</span>
-    </n-form-item>
-    <n-form-item label="收款账户" path="account">
-      <span>NaiveUiAdmin@qq.com</span>
-    </n-form-item>
-    <n-form-item label="收款人姓名" path="name">
-      <span>Ah jung</span>
-    </n-form-item>
-    <n-form-item label="转账金额" path="money">
-      <span>￥1980</span>
-    </n-form-item>
-    <n-divider />
-    <n-form-item label="支付密码" path="password">
-      <n-input type="password" v-model:value="formValue.password" />
-    </n-form-item>
-    <div style="margin-left: 80px">
-      <n-space>
-        <n-button type="primary" :loading="loading" @click="formSubmit">提交</n-button>
-        <n-button @click="prevStep">上一步</n-button>
-      </n-space>
-    </div>
-  </n-form>
+  <div class="p-6 py-4 ste1_bg flex gap-4">
+    <n-card
+      v-for="(item, index) in yearData"
+      :key="index"
+      :title="item.title"
+      bordered
+      hoverable
+      class="rounded-lg border-2 wordcc"
+      @click="selectCard(index)"
+      :class="{ 'border-indigo-600': selectedCard === index }"
+    >
+      <template #default>
+        <div class="flex items-center justify-between">
+          <img :src="coverImageRef1" class="imgsize" />
+          <span v-if="selectedCard === index" class="selected-state">
+            <n-icon size="24" color="#092a80">
+              <Checkbox />
+            </n-icon>
+          </span>
+        </div>
+      </template>
+    </n-card>
+  </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
   import { ref, defineEmits } from 'vue';
-  import { useMessage } from 'naive-ui';
-  const form2Ref: any = ref(null);
-  const message = useMessage();
-  const loading = ref(false);
+  import coverImage1 from '@/assets/icons/word.svg';
+  import { Checkbox } from '@vicons/ionicons5';
 
-  const formValue = ref({
-    password: '086611',
-  });
+  const emit = defineEmits(['nextStep']);
+  const coverImageRef1 = ref(coverImage1);
 
-  const rules = {
-    password: {
-      required: true,
-      message: '请输入支付密码',
-      trigger: 'blur',
-    },
+  const yearData = ref([
+    { title: '2021年药品使用总体情况' },
+    { title: '2021年药品审核情况' },
+    { title: '2022年药品使用总体情况' },
+    { title: '2022年药品审核情况' },
+    { title: '2023年药品使用总体情况' },
+    { title: '2023年药品审核情况' },
+    { title: '2024年药品使用总体情况' },
+    { title: '2024年药品审核情况' },
+  ]);
+
+  const selectedCard = ref<number | null>(null);
+  const selectCard = (cardIndex: number) => {
+    selectedCard.value = cardIndex;
   };
-
-  const emit = defineEmits(['prevStep', 'nextStep']);
-
-  function prevStep() {
-    emit('prevStep');
-  }
-
-  function formSubmit() {
-    loading.value = true;
-    form2Ref.value.validate((errors) => {
-      if (!errors) {
-        setTimeout(() => {
-          emit('nextStep');
-        }, 1500);
-      } else {
-        message.error('验证失败，请填写完整信息');
-      }
-    });
-  }
 </script>
+
+<style lang="less" scoped>
+  .ste1_bg {
+    border-radius: 4px;
+    background: #f0f2f5;
+    overflow-x: auto;
+    display: inline-flex;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .wordcc {
+    width: 300px;
+    flex-shrink: 0;
+  }
+  .imgsize {
+    width: 100px;
+    height: 100px;
+  }
+  .selected {
+    border: 2px solid #224376;
+  }
+  .selected-state {
+    font-weight: bold;
+  }
+</style>

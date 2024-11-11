@@ -1,22 +1,32 @@
 <template>
   <div>
     <div class="n-layout-page-header">
-      <n-card :bordered="false" title="分步表单">
-        将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。
-      </n-card>
+      <n-card :bordered="false" title="智能审核" />
     </div>
     <n-card :bordered="false" class="mt-4 proCard">
       <n-space vertical class="steps" justify="center">
         <n-steps :current="currentTab" :status="currentStatus">
-          <n-step title="填写转账信息" description="确保填写正确" />
-          <n-step title="确认转账信息" description="确认转账信息" />
-          <n-step title="完成转账" description="恭喜您，转账成功" />
+          <n-step title="选择审核类别" description="请选择其中一项" />
+          <n-step title="审核模板" description="选择具体审核模板" />
+          <n-step title="结果查看" />
         </n-steps>
         <step1 v-if="currentTab === 1" @next-step="nextStep" />
         <step2 v-if="currentTab === 2" @next-step="nextStep" @prev-step="prevStep" />
         <step3 v-if="currentTab === 3" @prev-step="prevStep" @finish="finish" />
       </n-space>
     </n-card>
+    <div style="margin-left: 12%">
+      <n-space v-if="currentTab === 1">
+        <n-button type="primary" @click="nextStep">下一步</n-button>
+      </n-space>
+      <n-space v-if="currentTab === 2">
+        <n-button type="primary" @click="nextStep">下一步</n-button>
+        <n-button type="default" @click="prevStep">上一步</n-button>
+      </n-space>
+      <n-space v-if="currentTab === 3">
+        <n-button type="primary" @click="finish">完成</n-button>
+      </n-space>
+    </div>
   </div>
 </template>
 
@@ -48,7 +58,7 @@
 
 <style lang="less" scoped>
   .steps {
-    max-width: 750px;
+    max-width: 80%;
     margin: 16px auto;
   }
 </style>

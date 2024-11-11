@@ -1,72 +1,75 @@
 <template>
-  <div>
-    <n-result status="success" title="操作成功" description="预计两小时内到账" class="step-result">
-      <template #default>
-        <div class="information">
-          <n-grid cols="2 s:2 m:3 l:3 xl:3 2xl:3" responsive="screen" class="my-1">
-            <n-gi>付款账户：</n-gi>
-            <n-gi>NaiveUiAdmin@163.com</n-gi>
-          </n-grid>
-          <n-grid cols="2 s:2 m:3 l:3 xl:3 2xl:3" responsive="screen" class="my-1">
-            <n-gi>收款账户：</n-gi>
-            <n-gi>xiaoma@qq.com</n-gi>
-          </n-grid>
-          <n-grid cols="2 s:2 m:3 l:3 xl:3 2xl:3" responsive="screen" class="my-1">
-            <n-gi>收款人姓名：</n-gi>
-            <n-gi>啊俊</n-gi>
-          </n-grid>
-          <n-grid cols="2 s:2 m:3 l:3 xl:3 2xl:3" responsive="screen" class="my-1">
-            <n-gi>转账金额：</n-gi>
-            <n-gi>￥<span class="money">1980</span> 元</n-gi>
-          </n-grid>
-        </div>
-      </template>
-      <template #footer>
-        <div class="flex justify-center">
-          <n-button type="primary" @click="finish" class="mr-4">再转一笔</n-button>
-          <n-button @click="prevStep">查看账单</n-button>
-        </div>
-      </template>
-    </n-result>
-  </div>
+  <n-space vertical>
+    <n-slider v-model:value="height" :min="200" :max="500" :step="100" style="max-width: 180px" />
+    <n-data-table
+      :columns="columns"
+      :data="data"
+      :pagination="pagination"
+      :scroll-x="1800"
+      :style="{ height: `${height}px` }"
+      flex-height
+    />
+  </n-space>
 </template>
 
-<script lang="ts" setup>
-  import { defineEmits } from 'vue';
+<script lang="ts">
+  import { defineComponent, ref } from 'vue';
+  import type { DataTableColumns } from 'naive-ui';
 
-  const emit = defineEmits(['finish', 'prevStep']);
-  function prevStep() {
-    emit('prevStep');
+  interface RowData {
+    key: number;
+    drugName: string;
+    approvalDate: string;
+    status: string;
+    remarks: string;
   }
 
-  function finish() {
-    emit('finish');
+  function createColumns(): DataTableColumns<RowData> {
+    return [
+      {
+        type: 'selection',
+        fixed: 'left',
+      },
+      {
+        title: '药品名称',
+        key: 'drugName',
+        width: 150,
+        fixed: 'left',
+      },
+      {
+        title: '批准日期',
+        key: 'approvalDate',
+        width: 150,
+        fixed: 'left',
+      },
+      {
+        title: '状态',
+        key: 'status',
+        width: 50,
+      },
+      {
+        title: '备注',
+        key: 'remarks',
+        width: 250,
+        fixed: 'right',
+      },
+    ];
   }
+
+  export default defineComponent({
+    setup() {
+      return {
+        data: Array.from({ length: 46 }).map((_, index) => ({
+          key: index,
+          drugName: `药品名称 ${index + 1}`,
+          approvalDate: `202${index % 5}-01-15`, // 示例日期
+          status: index % 2 === 0 ? '已批准' : '待审批',
+          remarks: index % 2 === 0 ? '合规' : '需补充材料',
+        })),
+        columns: createColumns(),
+        pagination: { pageSize: 10 },
+        height: ref(200),
+      };
+    },
+  });
 </script>
-
-<style lang="less" scoped>
-  .step-result {
-    max-width: 560px;
-    margin: 40px auto 0;
-
-    ::v-deep(.n-result-content) {
-      background-color: #fafafa;
-      padding: 24px 40px;
-    }
-
-    .information {
-      line-height: 22px;
-
-      .ant-row:not(:last-child) {
-        margin-bottom: 24px;
-      }
-    }
-
-    .money {
-      font-family: 'Helvetica Neue', sans-serif;
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 14px;
-    }
-  }
-</style>

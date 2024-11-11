@@ -35,7 +35,7 @@ const routes: Array<RouteRecordRaw> = [
           permissions: ['dashboard_console'],
           affix: true,
         },
-        component: () => import('@/views/shiregisterList/list.vue'),
+        component: () => import('@/views/form/stepForm/stepForm.vue'),
       },
       // {
       //   path: 'monitor',

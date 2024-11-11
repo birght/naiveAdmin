@@ -1,122 +1,100 @@
 <template>
-  <n-form
-    :label-width="100"
-    :model="formValue"
-    :rules="rules"
-    label-placement="left"
-    ref="form1Ref"
-    style="max-width: 500px; margin: 40px auto 0 80px"
-  >
-    <n-form-item label="付款账户" path="myAccount">
-      <n-select
-        placeholder="请选择付款账户"
-        :options="myAccountList"
-        v-model:value="formValue.myAccount"
-      />
-    </n-form-item>
-    <n-form-item label="收款账户" path="account">
-      <n-input-group>
-        <n-select
-          placeholder="请选择"
-          :options="accountTypeList"
-          :style="{ width: '20%' }"
-          v-model:value="formValue.accountType"
-        />
-        <n-input
-          placeholder="请输入收款账户"
-          :style="{ width: '80%' }"
-          v-model:value="formValue.account"
-        />
-      </n-input-group>
-    </n-form-item>
-    <n-form-item label="收款人姓名" path="name">
-      <n-input placeholder="请输入收款人姓名" v-model:value="formValue.name" />
-    </n-form-item>
-    <n-form-item label="转账金额" path="money">
-      <n-input placeholder="请输入转账金额" v-model:value="formValue.money">
-        <template #prefix>
-          <span class="text-gray-400">￥</span>
-        </template>
-      </n-input>
-    </n-form-item>
-    <div style="margin-left: 80px">
-      <n-space>
-        <n-button type="primary" @click="formSubmit">下一步</n-button>
-      </n-space>
-    </div>
-  </n-form>
+  <div class="p-6 py-4 ste1_bg flex gap-4">
+    <n-card
+      title="药品"
+      bordered
+      hoverable
+      class="rounded-lg border-2"
+      @click="selectCard(1)"
+      :class="{ 'border-indigo-600': selectedCard === 1 }"
+    >
+      <template #default>
+        <div class="flex items-center justify-between">
+          <img :src="coverImageRef1" class="imgsize" />
+          <span v-if="selectedCard === 1" class="selected-state">
+            <n-icon size="24" color="#092a80">
+              <Checkbox />
+            </n-icon>
+          </span>
+        </div>
+      </template>
+    </n-card>
+    <n-card
+      title="化妆品"
+      bordered
+      hoverable
+      class="rounded-lg border-2"
+      @click="selectCard(2)"
+      :class="{ 'border-indigo-600': selectedCard === 2 }"
+    >
+      <template #default>
+        <div class="flex items-center justify-between">
+          <img :src="coverImageRef2" class="imgsize" />
+          <span v-if="selectedCard === 2" class="selected-state">
+            <n-icon size="24" color="#092a80">
+              <Checkbox />
+            </n-icon>
+          </span>
+        </div>
+      </template>
+    </n-card>
+    <n-card
+      title="医疗器械"
+      bordered
+      hoverable
+      class="rounded-lg border-2"
+      @click="selectCard(3)"
+      :class="{ 'border-indigo-600': selectedCard === 3 }"
+    >
+      <template #default>
+        <div class="flex items-center justify-between">
+          <img :src="coverImageRef3" class="imgsize" />
+          <span v-if="selectedCard === 3" class="selected-state">
+            <n-icon size="24" color="#092a80">
+              <Checkbox />
+            </n-icon>
+          </span>
+        </div>
+      </template>
+    </n-card>
+  </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
   import { ref, defineEmits } from 'vue';
-  import { useMessage } from 'naive-ui';
-
-  const myAccountList = [
-    {
-      label: 'NaiveUiAdmin@163.com',
-      value: 1,
-    },
-    {
-      label: 'NaiveUiAdmin@qq.com',
-      value: 2,
-    },
-  ];
-
-  const accountTypeList = [
-    {
-      label: '微信',
-      value: 1,
-    },
-    {
-      label: '支付宝',
-      value: 2,
-    },
-  ];
+  import coverImage1 from '@/assets/icons/yaopin.png';
+  import coverImage2 from '@/assets/icons/huazhuangpin.png';
+  import coverImage3 from '@/assets/icons/yiliaoqixie.png';
+  import { Checkbox } from '@vicons/ionicons5';
 
   const emit = defineEmits(['nextStep']);
+  const coverImageRef1 = ref(coverImage1);
+  const coverImageRef2 = ref(coverImage2);
+  const coverImageRef3 = ref(coverImage3);
 
-  const form1Ref: any = ref(null);
-  const message = useMessage();
+  const selectedCard = ref(1); // 默认选中第一个卡片
 
-  const formValue = ref({
-    accountType: 1,
-    myAccount: null,
-    account: 'xioama@qq.com',
-    money: '1980',
-    name: 'Ah jung',
-  });
-
-  const rules = {
-    name: {
-      required: true,
-      message: '请输入收款人姓名',
-      trigger: 'blur',
-    },
-    account: {
-      required: true,
-      message: '请输入收款账户',
-      trigger: 'blur',
-    },
-    money: {
-      required: true,
-      message: '请输入转账金额',
-      trigger: 'blur',
-    },
-    myAccount: {
-      required: true,
-      type: 'number',
-      message: '请选择付款账户',
-      trigger: 'change',
-    },
+  const selectCard = (cardIndex: number) => {
+    selectedCard.value = cardIndex;
   };
-
-  function formSubmit() {
-    form1Ref.value.validate((errors) => {
-      if (!errors) {
-        emit('nextStep');
-      } else {
-        message.error('验证失败，请填写完整信息');
-      }
-    });
-  }
 </script>
+
+<style lang="less" scoped>
+  .ste1_bg {
+    border-radius: 4px;
+    background: #f0f2f5;
+  }
+
+  .imgsize {
+    width: 100px;
+    height: 100px;
+  }
+
+  .selected {
+    border: 2px solid #224376;
+  }
+
+  .selected-state {
+    font-weight: bold;
+  }
+</style>

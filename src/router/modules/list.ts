@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '案件列表',
         },
-        component: () => import('@/views/shiregisterList/list.vue'),
+        component: () => import('@/views/form/stepForm/stepForm.vue'),
       },
       {
         path: 'shidetail/:id?',
