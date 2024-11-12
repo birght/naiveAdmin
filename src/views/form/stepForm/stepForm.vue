@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div class="n-layout-page-header">
-      <n-card :bordered="false" title="智能审核" />
-    </div>
     <n-card :bordered="false" class="mt-4 proCard">
       <n-space vertical class="steps" justify="center">
         <n-steps :current="currentTab" :status="currentStatus">

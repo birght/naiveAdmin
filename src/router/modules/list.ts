@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/shilist',
     redirect: '/shilist/list',
     meta: {
-      title: '案件列表',
+      title: '查看',
       icon: renderIcon(TableOutlined),
       sort: 2,
     },
@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '案件列表',
         },
-        component: () => import('@/views/form/stepForm/stepForm.vue'),
+        component: () => import('@/views/shidev/index.vue'),
       },
       {
         path: 'shidetail/:id?',
