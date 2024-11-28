@@ -36,12 +36,34 @@ export const LoginRoute: RouteRecordRaw = {
     title: '登录',
   },
 };
+export const dev1Route: RouteRecordRaw = {
+  path: '/dev1',
+  name: 'dev1',
+  component: () => import('@/views/shidev1/list.vue'),
+  meta: {
+    title: '化妆品智能审核助手',
+  },
+};
+export const dev1RouteDetail: RouteRecordRaw = {
+  path: '/dev1detail/:pathMatch',
+  name: 'dev1detail',
+  component: () => import('@/views/shidev1/detail.vue'),
+  meta: {
+    title: '化妆品智能审核',
+  },
+};
 
 //需要验证权限
 export const asyncRoutes = [...routeModuleList];
 
 //普通路由 无需验证权限
-export const constantRouter: RouteRecordRaw[] = [LoginRoute, RootRoute, RedirectRoute];
+export const constantRouter: RouteRecordRaw[] = [
+  LoginRoute,
+  dev1Route,
+  dev1RouteDetail,
+  RootRoute,
+  RedirectRoute,
+];
 
 const router = createRouter({
   history: createWebHashHistory(),

@@ -35,26 +35,7 @@ const routes: Array<RouteRecordRaw> = [
           permissions: ['dashboard_console'],
           affix: true,
         },
-        component: () => import('@/views/shidev/index.vue'),
-      },
-      // {
-      //   path: 'monitor',
-      //   name: `${ routeName }_monitor`,
-      //   meta: {
-      //     title: '监控页',
-      //     permissions: ['dashboard_monitor']
-      //   },
-      //   component: () => import('@/views/dashboard/monitor/monitor.vue')
-      // },
-      {
-        path: 'workplace',
-        name: `${routeName}_workplace`,
-        meta: {
-          title: '工作台',
-          keepAlive: true,
-          permissions: ['dashboard_workplace'],
-        },
-        component: () => import('@/views/dashboard/workplace/workplace.vue'),
+        component: () => import('@/views/shilist/list.vue'),
       },
     ],
   },

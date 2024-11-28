@@ -105,7 +105,6 @@
 <script lang="ts" setup>
   import { NTable } from 'naive-ui';
 
-  import { useRouter } from 'vue-router';
   import { CreateOutline } from '@vicons/ionicons5';
   interface tableItem {
     no: number;
@@ -152,10 +151,6 @@
       tipsWarn: '当前批次不合格',
     },
   ];
-  const router = useRouter();
-  function anotherAction() {
-    router.push({ name: 'shidetail' });
-  }
   const columns = [
     { title: '申请编码', key: 'no' },
     { title: '企业名称', key: 'title' },

@@ -4,7 +4,7 @@
     <n-layout-header>
       <div class="top">
         <!-- <div class="text-xl font-bold"> Neusoft </div> -->
-        <div class="pl-2 text-base"> 药械智能审核助手 </div>
+        <div class="pl-2 text-base"> 药品智能审核助手 </div>
       </div>
     </n-layout-header>
     <n-layout content-style="padding: 24px 10px 10px 10px;" class="mt-4">
