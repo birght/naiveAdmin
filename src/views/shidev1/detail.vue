@@ -4,7 +4,7 @@
     <n-layout-header>
       <div class="top">
         <!-- <div class="text-xl font-bold"> Neusoft </div> -->
-        <div class="pl-2 text-base"> 化妆品智能审核助手 </div>
+        <div class="pl-2 text-base"> 化妆品智能辅助审核 </div>
       </div>
     </n-layout-header>
     <n-layout content-style="padding: 24px 10px 10px 10px;" class="mt-4">
@@ -46,216 +46,127 @@
           <n-collapse-item title="1.备案申请表" name="1">
             <template #arrow>
               <n-icon color="#092a80">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    opacity=".3"
-                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <ArrowCircleLeftTwotone />
               </n-icon>
             </template>
             <template #header>
               <div class="font-bold">1.备案申请表</div>
               <n-tag type="error" class="ml-2" size="small">审核不通过</n-tag>
+              <n-badge :value="2" :offset="offset">
+                <n-tag type="error" class="ml-2" size="small">存在问题项</n-tag>
+              </n-badge>
             </template>
             <template #header-extra>
               <n-button
-                quaternary
+                class="ml-2"
                 size="small"
                 type="info"
-                @click="handleButtonClick('', 'pdf', $event)"
-                >暂无材料</n-button
+                @click.stop="gotoQuestionNum(data1, '1')"
+                >详情</n-button
               >
-              <n-badge :value="2" :offset="offset">
-                <n-button
-                  class="ml-2"
-                  secondary
-                  size="small"
-                  type="warning"
-                  @click.stop="gotoQuestionNum(data, '1')"
-                  >问题数量</n-button
-                >
-              </n-badge>
             </template>
-            <n-data-table :columns="columns" :data="data" />
+            <n-data-table :columns="columns" :data="data1" />
           </n-collapse-item>
           <n-collapse-item title="2.产品名称命名依据" name="2">
             <template #arrow>
               <n-icon color="#092a80">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    opacity=".3"
-                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <ArrowCircleLeftTwotone />
               </n-icon>
             </template>
             <template #header>
               <div class="font-bold">2.产品名称命名依据</div>
               <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
             </template>
+            <template #header-extra>
+              <n-button class="ml-2" size="small" type="info" @click.stop="gotoQuestionNum([], '2')"
+                >详情</n-button
+              >
+            </template>
           </n-collapse-item>
           <n-collapse-item title="3.产品配方" name="3">
             <template #arrow>
               <n-icon color="#092a80">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    opacity=".3"
-                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <ArrowCircleLeftTwotone />
               </n-icon>
             </template>
             <template #header>
               <div class="font-bold">3.产品配方</div>
               <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
             </template>
+            <template #header-extra>
+              <n-button class="ml-2" size="small" type="info" @click.stop="gotoQuestionNum([], '3')"
+                >详情</n-button
+              >
+            </template>
           </n-collapse-item>
           <n-collapse-item title="4.产品执行的标准" name="4">
             <template #arrow>
               <n-icon color="#092a80">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    opacity=".3"
-                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <ArrowCircleLeftTwotone />
               </n-icon>
             </template>
             <template #header>
               <div class="font-bold">4.产品执行的标准</div>
               <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
             </template>
+            <template #header-extra>
+              <n-button class="ml-2" size="small" type="info" @click.stop="gotoQuestionNum([], '4')"
+                >详情</n-button
+              >
+            </template>
           </n-collapse-item>
           <n-collapse-item title="5.产品标签" name="5">
             <template #arrow>
               <n-icon color="#092a80">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    opacity=".3"
-                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <ArrowCircleLeftTwotone />
               </n-icon>
             </template>
             <template #header>
               <div class="font-bold">5.产品标签</div>
               <n-tag type="error" class="ml-2" size="small">审核不通过</n-tag>
+              <n-badge :value="2" :offset="offset">
+                <n-tag type="error" class="ml-2" size="small">存在问题项</n-tag>
+              </n-badge>
             </template>
             <template #header-extra>
               <n-button
-                quaternary
+                class="ml-2"
                 size="small"
                 type="info"
-                @click="handleButtonClick('', 'pdf', $event)"
-                >暂无材料</n-button
+                @click.stop="gotoQuestionNum(data5, '5')"
+                >详情</n-button
               >
-              <n-badge :value="2" :offset="offset">
-                <n-button
-                  class="ml-2"
-                  secondary
-                  size="small"
-                  type="warning"
-                  @click.stop="gotoQuestionNum(data4, '4')"
-                  >问题数量</n-button
-                >
-              </n-badge>
             </template>
-            <n-data-table :columns="columns" :data="data4" />
+            <n-data-table :columns="columns" :data="data5" />
           </n-collapse-item>
           <n-collapse-item title="6.产品检验报告" name="6">
             <template #arrow>
               <n-icon color="#092a80">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    opacity=".3"
-                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <ArrowCircleLeftTwotone />
               </n-icon>
             </template>
             <template #header>
               <div class="font-bold">6.产品检验报告</div>
               <n-tag type="success" class="ml-2" size="small">审核通过</n-tag>
             </template>
+            <template #header-extra>
+              <n-button class="ml-2" size="small" type="info" @click.stop="gotoQuestionNum([], '6')"
+                >详情</n-button
+              >
+            </template>
           </n-collapse-item>
           <n-collapse-item title="7.产品安全评估资料" name="7">
             <template #arrow>
               <n-icon color="#092a80">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    opacity=".3"
-                    d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm0 11l-4-4h8l-4 4z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm0-5l4-4H8z"
-                    fill="currentColor"
-                  />
-                </svg>
+                <ArrowCircleLeftTwotone />
               </n-icon>
             </template>
             <template #header>
               <div class="font-bold">7.产品安全评估资料</div>
               <n-tag type="error" class="ml-2" size="small">审核不通过</n-tag>
+              <n-badge :value="2" :offset="offset">
+                <n-tag type="error" class="ml-2" size="small">存在问题项</n-tag>
+              </n-badge>
             </template>
             <template #header-extra>
               <n-button
@@ -264,18 +175,15 @@
                 @click="handleButtonClick('安全评估报告样例', 'pdf', $event)"
                 >附件预览</n-button
               >
-              <n-badge :value="2" :offset="offset">
-                <n-button
-                  class="ml-2"
-                  secondary
-                  size="small"
-                  type="warning"
-                  @click.stop="gotoQuestionNum(data8, '8')"
-                  >问题数量</n-button
-                >
-              </n-badge>
+              <n-button
+                class="ml-2"
+                size="small"
+                type="info"
+                @click.stop="gotoQuestionNum(data7, '7')"
+                >详情</n-button
+              >
             </template>
-            <n-data-table :columns="columns" :data="data8" />
+            <n-data-table :columns="columns" :data="data7" />
           </n-collapse-item>
         </n-collapse>
       </n-card>
@@ -307,22 +215,26 @@
               </n-descriptions-item>
             </n-descriptions>
           </n-col>
-          <n-col :span="2" class="flex items-end justify-end">
+          <!-- <n-col :span="2" class="flex items-end justify-end">
             <n-button type="info" class="mt-auto" @click="changeResultSm" size="small"
               >结果标注</n-button
             >
-          </n-col>
+          </n-col> -->
         </n-row>
         <n-data-table :columns="columns1" :data="dataShow" class="mt-4" />
         <n-divider />
         <n-tabs type="line" animated>
           <n-tab-pane name="formData" tab="表单数据">
-            <img v-if="listMark === '1'" src="~@/assets/images/listDataImg1.jpg" alt="" />
-            <img v-if="listMark === '4'" src="~@/assets/images/listDataImg2.jpg" alt="" />
-            <img v-if="listMark === '8'" src="~@/assets/images/listDataImg3.jpg" alt="" />
+            <dev2 :exampleData="typedJsonData" />
+
+            <!-- <div v-if="listMark === '1'">
+              <dev2 :exampleData="typedJsonData" />
+            </div>
+            <img v-if="listMark === '5'" src="~@/assets/images/listDataImg2.jpg" alt="" />
+            <img v-if="listMark === '7'" src="~@/assets/images/listDataImg3.jpg" alt="" /> -->
           </n-tab-pane>
           <n-tab-pane name="fileData" tab="文档数据">
-            <n-row gutter="12" v-if="listMark === '8'">
+            <n-row gutter="12" v-if="listMark === '7'">
               <n-col :span="12">
                 <n-scrollbar style="max-height: 90vh">
                   <PreviewFile :src="pdfSrc" :fileType="fileTypeParent" />
@@ -388,12 +300,47 @@
 </template>
 
 <script setup lang="ts">
+  import { ArrowCircleLeftTwotone } from '@vicons/material';
   import { ref, h, onMounted } from 'vue';
   import { PreviewFile } from '@/components/PreviewFile';
   import { NButton } from 'naive-ui';
   import type { DataTableColumns } from 'naive-ui';
   import { useMessage } from 'naive-ui';
   import { useRoute } from 'vue-router';
+  import dev2 from './dev2.vue';
+  import jsonData1 from './detaildata1.json';
+  import jsonData2 from './detaildata2.json';
+  import jsonData3 from './detaildata3.json';
+  import jsonData4 from './detaildata4.json';
+  import jsonData5 from './detaildata5.json';
+  import jsonData6 from './detaildata6.json';
+  import jsonData7 from './detaildata7.json';
+
+  import { PageDetailSection } from './type';
+  // const typedJsonData = jsonData as PageDetailSection[][];
+  const typedJsonData = ref<PageDetailSection[][]>([]);
+
+  const listMark = ref('7');
+  const gotoQuestionNum = (curData, newMark) => {
+    listMark.value = newMark;
+    if (newMark === '1') {
+      typedJsonData.value = jsonData1 as unknown as PageDetailSection[][];
+    } else if (newMark === '2') {
+      typedJsonData.value = jsonData2 as unknown as PageDetailSection[][];
+    } else if (newMark === '3') {
+      typedJsonData.value = jsonData3 as unknown as PageDetailSection[][];
+    } else if (newMark === '4') {
+      typedJsonData.value = jsonData4 as unknown as PageDetailSection[][];
+    } else if (newMark === '5') {
+      typedJsonData.value = jsonData5 as unknown as PageDetailSection[][];
+    } else if (newMark === '6') {
+      typedJsonData.value = jsonData6 as unknown as PageDetailSection[][];
+    } else if (newMark === '7') {
+      typedJsonData.value = jsonData7 as unknown as PageDetailSection[][];
+    }
+    dataShow.value = curData;
+    showModalissue.value = true;
+  };
   const route = useRoute();
   const message = useMessage();
   const modalShow = ref(false);
@@ -435,6 +382,7 @@
     mark: string;
   }
   const offset = [6, -2] as const;
+
   onMounted(() => {
     console.log(route);
 
@@ -444,15 +392,15 @@
 
     console.log(rowData.value);
   });
-  const changeResultSm = () => {
-    dataShow.value.forEach((element) => {
-      if (element.result === '问题') {
-        // Toggle the mark field for items where result is '问题'
-        element.mark = element.mark === '是' ? '否' : '是';
-      }
-    });
-    console.log(dataShow.value);
-  };
+  // const changeResultSm = () => {
+  //   dataShow.value.forEach((element) => {
+  //     if (element.result === '问题') {
+  //       // Toggle the mark field for items where result is '问题'
+  //       element.mark = element.mark === '是' ? '否' : '是';
+  //     }
+  //   });
+  //   console.log(dataShow.value);
+  // };
 
   function createColumns({}: { play: (row: Song) => void }): DataTableColumns<Song> {
     return [
@@ -550,13 +498,31 @@
         title: '结果标注',
         key: 'mark',
       },
+      {
+        title: '操作',
+        key: 'action',
+        render(row) {
+          return h(
+            NButton,
+            {
+              size: 'small',
+              type: 'info',
+              onClick: () => {
+                // 更新行的 mark 属性
+                row.mark = row.mark === '是' ? '否' : '是';
+              },
+            },
+            { default: () => '结果标注' }
+          );
+        },
+      },
     ];
   }
   function outputFileRs() {
-    const filePath = '/药品再注册申请资料补正通知书.docx';
+    const filePath = '/化妆品智能审核结果.docx';
     const link = document.createElement('a');
     link.href = filePath;
-    link.download = '药品再注册申请资料补正通知书.docx';
+    link.download = '化妆品智能审核结果.docx';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -569,23 +535,23 @@
   const onIframeLoad = () => {
     loading.value = false; // 隐藏加载条
   };
-  const data = ref([
+  const data1 = ref([
     {
       standard: '人体检验报告号',
       resource: '表单数据',
       result: '问题',
-      description: '合法有效性校验不通过，药品再注册申请表未加盖公章',
+      description: '合法有效性校验不通过',
       mark: '是',
     },
     {
       standard: '使用已注册新原料',
       resource: '表单数据',
       result: '问题',
-      description: '材料完备，格式符合要求',
+      description: '材料不完备，格式不符合要求',
       mark: '是',
     },
   ]);
-  const data4 = ref([
+  const data5 = ref([
     {
       standard: '使用期限',
       resource: '表单数据',
@@ -594,14 +560,14 @@
       mark: '是',
     },
     {
-      standard: '使用已注册新原料',
+      standard: '净含量',
       resource: '表单数据',
       result: '问题',
       description: '净含量单位应使用g(克)、kg(千克)、mL(ml)(室升)、L(I)(升)',
       mark: '是',
     },
   ]);
-  const data8 = ref([
+  const data7 = ref([
     {
       standard: '评估单位',
       resource: '表单数据',
@@ -644,12 +610,6 @@
     fileTypeParent = filetype;
     showModal.value = true;
   }
-  const listMark = ref('8');
-  const gotoQuestionNum = (curData, newMark) => {
-    listMark.value = newMark;
-    dataShow.value = curData;
-    showModalissue.value = true;
-  };
 </script>
 <style lang="less" scoped>
   .top {

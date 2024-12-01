@@ -41,7 +41,7 @@ export const dev1Route: RouteRecordRaw = {
   name: 'dev1',
   component: () => import('@/views/shidev1/list.vue'),
   meta: {
-    title: '化妆品智能审核助手',
+    title: '化妆品智能辅助审核',
   },
 };
 export const dev1RouteDetail: RouteRecordRaw = {
@@ -52,12 +52,21 @@ export const dev1RouteDetail: RouteRecordRaw = {
     title: '化妆品智能审核',
   },
 };
+export const dev2: RouteRecordRaw = {
+  path: '/dev2',
+  name: 'dev2',
+  component: () => import('@/views/shidev1/dev2.vue'),
+  meta: {
+    title: '测试',
+  },
+};
 
 //需要验证权限
 export const asyncRoutes = [...routeModuleList];
 
 //普通路由 无需验证权限
 export const constantRouter: RouteRecordRaw[] = [
+  dev2,
   LoginRoute,
   dev1Route,
   dev1RouteDetail,

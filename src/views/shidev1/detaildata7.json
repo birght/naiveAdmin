@@ -1,0 +1,191 @@
+[
+  [
+    {
+      "showName": "安全评估信息",
+      "itemPid": "0",
+      "showType": "title",
+      "showColIndex": "10",
+      "showRowIndex": "1",
+      "showWidth": "",
+      "showColIcon": null,
+      "showColBg": null,
+      "resultType": null,
+      "failResults": null,
+      "message": "",
+      "warn": "",
+      "itemValue": null,
+      "arrayIndex": null,
+      "colomn": [],
+      "tableList": [],
+      "fileList": [],
+      "descriptionList": [],
+      "cardList": []
+    }
+  ],
+  [
+    {
+      "showName": null,
+      "itemPid": null,
+      "showType": "description",
+      "showColIndex": null,
+      "showRowIndex": null,
+      "showWidth": null,
+      "showColIcon": null,
+      "showColBg": null,
+      "resultType": "",
+      "failResults": null,
+      "message": "",
+      "warn": "",
+      "itemValue": null,
+      "arrayIndex": null,
+      "colomn": [],
+      "tableList": [],
+      "fileList": [],
+      "descriptionList": [
+        {
+          "showName": "评估单位",
+          "itemPid": "01.02.07.01.001-1.0.0",
+          "showWidth": "12",
+          "showColIcon": null,
+          "showColBg": null,
+          "resultType": "1",
+          "message": "出具检验报告的检验机构不符合资质要求",
+          "warn": "",
+          "itemValue": "评估单位（测试数据）"
+        },
+        {
+          "showName": "评估日期",
+          "itemPid": "01.02.07.01.002-1.0.0",
+          "showWidth": "12",
+          "showColIcon": null,
+          "showColBg": null,
+          "resultType": "0",
+          "message": "",
+          "warn": "",
+          "itemValue": "2023-11-11"
+        }
+      ],
+      "cardList": []
+    }
+  ],
+  [
+    {
+      "showName": null,
+      "itemPid": null,
+      "showType": "description",
+      "showColIndex": null,
+      "showRowIndex": null,
+      "showWidth": null,
+      "showColIcon": null,
+      "showColBg": null,
+      "resultType": "",
+      "failResults": null,
+      "message": "",
+      "warn": "",
+      "itemValue": null,
+      "arrayIndex": null,
+      "colomn": [],
+      "tableList": [],
+      "fileList": [],
+      "descriptionList": [
+        {
+          "showName": "评估摘要",
+          "itemPid": "01.02.07.01.003-1.0.0",
+          "showWidth": "12",
+          "showColIcon": null,
+          "showColBg": null,
+          "resultType": "0",
+          "message": "",
+          "warn": "",
+          "itemValue": "评估摘要（测试数据）"
+        }
+      ],
+      "cardList": []
+    }
+  ],
+  [
+    {
+      "showName": null,
+      "itemPid": null,
+      "showType": "description",
+      "showColIndex": null,
+      "showRowIndex": null,
+      "showWidth": null,
+      "showColIcon": null,
+      "showColBg": null,
+      "resultType": "",
+      "failResults": null,
+      "message": "",
+      "warn": "",
+      "itemValue": null,
+      "arrayIndex": null,
+      "colomn": [],
+      "tableList": [],
+      "fileList": [],
+      "descriptionList": [
+        {
+          "showName": "产品简介",
+          "itemPid": "01.02.07.01.004-1.0.0",
+          "showWidth": "12",
+          "showColIcon": null,
+          "showColBg": null,
+          "resultType": "0",
+          "message": "",
+          "warn": "",
+          "itemValue": "产品简介（测试数据）"
+        }
+      ],
+      "cardList": []
+    }
+  ],
+  [
+    {
+      "showName": null,
+      "itemPid": null,
+      "showType": "table",
+      "showColIndex": null,
+      "showRowIndex": null,
+      "showWidth": null,
+      "showColIcon": null,
+      "showColBg": null,
+      "resultType": "",
+      "failResults": null,
+      "message": "",
+      "warn": "",
+      "itemValue": null,
+      "arrayIndex": null,
+      "colomn": [
+        {
+          "label": "姓名",
+          "prop": "01.02.07.01.01.001-1.0.0"
+        },
+        {
+          "label": "国籍",
+          "prop": "01.02.07.01.01.002-1.0.0"
+        },
+        {
+          "label": "证件类型",
+          "prop": "01.02.07.01.01.003-1.0.0"
+        },
+        {
+          "label": "证件号",
+          "prop": "01.02.07.01.01.004-1.0.0"
+        }
+      ],
+      "tableList": [
+        {
+          "01.02.07.01.01.004-1.0.0": "证件号(测试数据)",
+          "warn": "",
+          "01.02.07.01.01.001-1.0.0": "姓名（测试数据）",
+          "01.02.07.01.01.002-1.0.0": "中国",
+          "message": "",
+          "01.02.07.01.01.003-1.0.0": "居民身份证",
+          "resultType": "0"
+        }
+      ],
+      "fileList": [],
+      "descriptionList": [],
+      "cardList": []
+    }
+  ]
+]

@@ -1,0 +1,166 @@
+[
+  [
+    {
+      "showName": "检验报告附件汇总",
+      "itemPid": "0",
+      "showType": "title",
+      "showColIndex": "10",
+      "showRowIndex": "1",
+      "showWidth": "",
+      "showColIcon": null,
+      "showColBg": null,
+      "resultType": null,
+      "failResults": null,
+      "message": "",
+      "warn": "",
+      "itemValue": null,
+      "arrayIndex": null,
+      "colomn": [],
+      "tableList": [],
+      "fileList": [],
+      "descriptionList": [],
+      "cardList": []
+    }
+  ],
+  [
+    {
+      "showName": "自行检验报告",
+      "itemPid": null,
+      "showType": "file",
+      "showColIndex": null,
+      "showRowIndex": null,
+      "showWidth": null,
+      "showColIcon": null,
+      "showColBg": null,
+      "resultType": "",
+      "failResults": null,
+      "message": "",
+      "warn": "",
+      "itemValue": null,
+      "arrayIndex": null,
+      "colomn": [
+        {
+          "label": "文件名称",
+          "prop": "fileName"
+        },
+        {
+          "label": "文件格式",
+          "prop": "fileFormat"
+        },
+        {
+          "label": "文件大小",
+          "prop": "fileSize"
+        },
+        {
+          "label": "文件时间",
+          "prop": "fileTime"
+        },
+        {
+          "label": "文件地址",
+          "prop": "fileAddress"
+        },
+        {
+          "label": "错误",
+          "prop": "message"
+        }
+      ],
+      "tableList": [
+        {
+          "warn": "",
+          "01.02.06.01.01.002-1.0.0": "",
+          "01.02.06.01.01.005-1.0.0": "",
+          "01.02.06.01.01.003-1.0.0": "",
+          "01.02.06.01.01.001-1.0.0": "",
+          "01.02.06.01.01.004-1.0.0": "",
+          "message": "",
+          "resultType": "0"
+        }
+      ],
+      "fileList": [
+        {
+          "fileName": "",
+          "fileSize": "",
+          "fileTime": "",
+          "fileFormat": "",
+          "fileAddress": "",
+          "message": "",
+          "warn": null,
+          "resultType": "0"
+        }
+      ],
+      "descriptionList": [],
+      "cardList": []
+    }
+  ],
+  [
+    {
+      "showName": "第三方检验报告",
+      "itemPid": null,
+      "showType": "file",
+      "showColIndex": null,
+      "showRowIndex": null,
+      "showWidth": null,
+      "showColIcon": null,
+      "showColBg": null,
+      "resultType": "",
+      "failResults": null,
+      "message": "",
+      "warn": "",
+      "itemValue": null,
+      "arrayIndex": null,
+      "colomn": [
+        {
+          "label": "文件名称",
+          "prop": "fileName"
+        },
+        {
+          "label": "文件格式",
+          "prop": "fileFormat"
+        },
+        {
+          "label": "文件大小",
+          "prop": "fileSize"
+        },
+        {
+          "label": "文件时间",
+          "prop": "fileTime"
+        },
+        {
+          "label": "文件地址",
+          "prop": "fileAddress"
+        },
+        {
+          "label": "错误",
+          "prop": "message"
+        }
+      ],
+      "tableList": [
+        {
+          "01.02.06.01.02.005-1.0.0": "",
+          "01.02.06.01.02.002-1.0.0": "",
+          "warn": "",
+          "01.02.06.01.01.004-1.0.0": "",
+          "01.02.06.01.02.003-1.0.0": "",
+          "01.02.06.01.02.006-1.0.0": "",
+          "message": "",
+          "01.02.06.01.02.001-1.0.0": "",
+          "resultType": "0"
+        }
+      ],
+      "fileList": [
+        {
+          "fileName": "",
+          "fileSize": "",
+          "fileTime": "",
+          "fileFormat": "",
+          "fileAddress": "",
+          "message": "",
+          "warn": null,
+          "resultType": "0"
+        }
+      ],
+      "descriptionList": [],
+      "cardList": []
+    }
+  ]
+]

@@ -3,11 +3,11 @@
     <n-layout-header>
       <div class="top">
         <!-- <div class="text-xl font-bold"> Neusoft </div> -->
-        <div class="pl-2 text-base"> 化妆品智能审核助手 </div>
+        <div class="pl-2 text-base"> 化妆品智能辅助审核 </div>
       </div>
     </n-layout-header>
     <n-layout-content content-style="padding: 12px;" class="mt-4">
-      <!-- <n-row gutter="12">
+      <n-row gutter="12">
         <n-col :span="4">
           <n-card>
             <n-col :span="4">
@@ -27,7 +27,7 @@
               </n-icon>
             </n-col>
             <n-col :span="20" class="text-center">
-              <div>待办项</div>
+              <div>待整理</div>
               <div class="text-2xl">3</div>
             </n-col>
           </n-card>
@@ -41,8 +41,8 @@
                 </n-icon>
               </n-col>
               <n-col :span="20" class="text-center">
-                <div>审核未通过数</div>
-                <div class="text-2xl">1</div>
+                <div>退回</div>
+                <div class="text-2xl">0</div>
               </n-col>
             </n-row>
           </n-card>
@@ -75,12 +75,12 @@
               </n-icon>
             </n-col>
             <n-col :span="20" class="text-center">
-              <div>通过数</div>
-              <div class="text-2xl">2</div>
+              <div>待确认</div>
+              <div class="text-2xl">0</div>
             </n-col>
           </n-card>
         </n-col>
-      </n-row> -->
+      </n-row>
       <n-spin :show="show">
         <n-data-table
           :columns="columns"
@@ -100,10 +100,10 @@
 
 <script lang="ts" setup>
   import { useRouter } from 'vue-router';
-  // import { CreateOutline } from '@vicons/ionicons5';
   import { NButton } from 'naive-ui';
   import { h, nextTick, ref } from 'vue';
-  // import Typewriter from 'typewriter-effect/dist/core';
+  import Typewriter from 'typewriter-effect/dist/core';
+  import { CreateOutline } from '@vicons/ionicons5';
 
   const show = ref(false);
   const pagination = {
@@ -247,42 +247,35 @@
     show.value = true;
     console.log(row, '22');
     nextTick(() => {
-      router.push({
-        name: 'dev1detail',
-        // 保留当前路径并删除第一个字符，以避免目标 URL 以 `//` 开头。
-        params: { pathMatch: JSON.stringify(row) },
-      });
-      // const app = document.querySelector('#typewriter');
-      // router.push({ name: 'dev1detail', params: { rowData: JSON.stringify(row) } });
-      // 确保这里不再是 null
-      // if (app) {
-      //   let typewriter = new Typewriter(app, {
-      //     delay: 15,
-      //   });
-      //   typewriter
-      //     .typeString('<div><strong>执行药械智能审核助手</strong></div>')
-      //     .pauseFor(1200)
-      //     .typeString('<span style="font-size:14px">开启内容核对</span> ')
-      //     .typeString('<strong>药品再注册申请表</strong>')
-      //     .deleteChars(8)
-      //     .typeString('<strong>证明性文件</strong>')
-      //     .deleteChars(5)
-      //     .typeString('<strong>五年内生产、销售..</strong>')
-      //     .deleteChars(10)
-      //     .typeString('<strong>五年内药品临床使用情况</strong>')
-      //     .deleteChars(12)
-      //     .typeString('<strong>生产药品制剂所用...</strong>')
-      //     .deleteChars(12)
-      //     .typeString('<strong>申请材料真实性承诺书</strong>')
-      //     .deleteChars(18)
-      //     .pauseFor(600)
-      //     .typeString('<strong> <span style="color: #27ae60;">完成检查..</span></strong>')
-      //     .pauseFor(1200)
-      //     .callFunction(() => {
-      //       router.push({ name: 'shidetail' });
-      //     })
-      //     .start();
-      // }
+      const app = document.querySelector('#typewriter');
+      if (app) {
+        let typewriter = new Typewriter(app, {
+          delay: 15,
+        });
+        typewriter
+          .typeString('<div><strong>化妆品智能辅助审核</strong></div>')
+          .pauseFor(100)
+          .typeString('<span style="font-size:14px">开启内容核对</span> ')
+          .typeString('<strong>备案申请表</strong>')
+          .deleteChars(8)
+          .typeString('<strong>产品名称命名依据</strong>')
+          .deleteChars(5)
+          .typeString('<strong>产品配方</strong>')
+          .deleteChars(3)
+          .typeString('<strong>产品安全评估资料</strong>')
+          .deleteChars(4)
+          .pauseFor(100)
+          .typeString('<strong> <span style="color: #27ae60;">完成检查..</span></strong>')
+          .pauseFor(300)
+          .callFunction(() => {
+            router.push({
+              name: 'dev1detail',
+              // 保留当前路径并删除第一个字符，以避免目标 URL 以 `//` 开头。
+              params: { pathMatch: JSON.stringify(row) },
+            });
+          })
+          .start();
+      }
     });
   }
 </script>
@@ -297,9 +290,8 @@
     // background: #6e82f7;
   }
   #typewriter {
-    padding: 40px;
     width: 600px;
-    height: 300px;
+    height: 100px;
     text-align: center;
     font-size: 18px;
     border-radius: 20px;

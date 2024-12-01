@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { getCurrentInstance, ref, nextTick, unref, computed, useAttrs } from 'vue';
+  import { getCurrentInstance, ref, nextTick, unref, computed, useAttrs, defineProps } from 'vue';
   import { basicProps } from './props';
   import startDrag from '@/utils/Drag';
   import { deepMerge } from '@/utils';

@@ -1,0 +1,374 @@
+[
+	[{
+		"showName": "配方明细",
+		"itemPid": "0",
+		"showType": "title",
+		"showColIndex": "10",
+		"showRowIndex": "1",
+		"showWidth": "12",
+		"showColIcon": null,
+		"showColBg": null,
+		"resultType": null,
+		"failResults": null,
+		"message": "",
+		"warn": "",
+		"itemValue": null,
+		"arrayIndex": null,
+		"colomn": [],
+		"tableList": [],
+		"fileList": [],
+		"descriptionList": [],
+		"cardList": []
+	}],
+	[{
+		"showName": null,
+		"itemPid": null,
+		"showType": "description",
+		"showColIndex": null,
+		"showRowIndex": null,
+		"showWidth": null,
+		"showColIcon": null,
+		"showColBg": null,
+		"resultType": "",
+		"failResults": null,
+		"message": "",
+		"warn": "",
+		"itemValue": null,
+		"arrayIndex": null,
+		"colomn": [],
+		"tableList": [],
+		"fileList": [],
+		"descriptionList": [{
+				"showName": "配方名称",
+				"itemPid": "01.02.03.001-1.0.0",
+				"showWidth": "12",
+				"showColIcon": null,
+				"showColBg": null,
+				"resultType": "0",
+				"message": "",
+				"warn": "",
+				"itemValue": "记忆花萃芦荟精华水配方"
+			},
+			{
+				"showName": "原料含量（%）",
+				"itemPid": "01.02.03.01.001-1.0.0",
+				"showWidth": "",
+				"showColIcon": null,
+				"showColBg": null,
+				"resultType": "0",
+				"message": "",
+				"warn": "",
+				"itemValue": "100"
+			},
+			{
+				"showName": "主要使用目的",
+				"itemPid": "01.02.03.01.002-1.0.0",
+				"showWidth": "",
+				"showColIcon": null,
+				"showColBg": null,
+				"resultType": "0",
+				"message": "",
+				"warn": "",
+				"itemValue": "主要使用目的（测试数据）"
+			}
+		],
+		"cardList": []
+	}],
+	[{
+		"showName": null,
+		"itemPid": null,
+		"showType": "table",
+		"showColIndex": null,
+		"showRowIndex": null,
+		"showWidth": null,
+		"showColIcon": null,
+		"showColBg": null,
+		"resultType": "",
+		"failResults": null,
+		"message": "",
+		"warn": "",
+		"itemValue": null,
+		"arrayIndex": null,
+		"colomn": [{
+				"label": "标准中文名称",
+				"prop": "01.02.03.01.01.001-1.0.0"
+			},
+			{
+				"label": "INCI名称",
+				"prop": "01.02.03.01.01.002-1.0.0"
+			},
+			{
+				"label": "原料中成分含量（%）",
+				"prop": "01.02.03.01.01.003-1.0.0"
+			},
+			{
+				"label": "实际成分含量（%）",
+				"prop": "01.02.03.01.01.004-1.0.0"
+			},
+			{
+				"label": "错误",
+				"prop": "message"
+			}
+		],
+		"tableList": [{
+				"warn": "",
+				"01.02.03.01.01.001-1.0.0": "精氨酸",
+				"01.02.03.01.01.003-1.0.0": "100",
+				"message": "",
+				"01.02.03.01.01.004-1.0.0": "23.8",
+				"resultType": "0",
+				"01.02.03.01.01.002-1.0.0": "ARGININE"
+			},
+			{
+				"warn": "",
+				"01.02.03.01.01.001-1.0.0": "EDTA 二钠",
+				"01.02.03.01.01.003-1.0.0": "100",
+				"message": "",
+				"01.02.03.01.01.004-1.0.0": "19",
+				"resultType": "0",
+				"01.02.03.01.01.002-1.0.0": "DISODIUM EDTA"
+			},
+			{
+				"warn": "",
+				"01.02.03.01.01.001-1.0.0": "赤藓醇",
+				"01.02.03.01.01.003-1.0.0": "100",
+				"message": "",
+				"01.02.03.01.01.004-1.0.0": "17",
+				"resultType": "0",
+				"01.02.03.01.01.002-1.0.0": "RETINOL"
+			},
+			{
+				"warn": "",
+				"01.02.03.01.01.001-1.0.0": "对羟基苯乙酮",
+				"01.02.03.01.01.003-1.0.0": "100",
+				"message": "",
+				"01.02.03.01.01.004-1.0.0": "14.1",
+				"resultType": "0",
+				"01.02.03.01.01.002-1.0.0": "HYDROXYACETOPHENONE"
+			},
+			{
+				"warn": "",
+				"01.02.03.01.01.001-1.0.0": "丁二醇",
+				"01.02.03.01.01.003-1.0.0": "100",
+				"message": "",
+				"01.02.03.01.01.004-1.0.0": "14",
+				"resultType": "0",
+				"01.02.03.01.01.002-1.0.0": "BUTYLENE GLYCOL"
+			},
+			{
+				"warn": "",
+				"01.02.03.01.01.001-1.0.0": "黄原胶",
+				"01.02.03.01.01.003-1.0.0": "100",
+				"message": "",
+				"01.02.03.01.01.004-1.0.0": "12.1",
+				"resultType": "0",
+				"01.02.03.01.01.002-1.0.0": "XANTHAN GUM"
+			}
+		],
+		"fileList": [],
+		"descriptionList": [],
+		"cardList": []
+	}],
+	[{
+		"showName": null,
+		"itemPid": null,
+		"showType": "table",
+		"showColIndex": null,
+		"showRowIndex": null,
+		"showWidth": null,
+		"showColIcon": null,
+		"showColBg": null,
+		"resultType": "",
+		"failResults": null,
+		"message": "",
+		"warn": "",
+		"itemValue": null,
+		"arrayIndex": null,
+		"colomn": [{
+				"label": "自行填报原料安全信息",
+				"prop": "01.02.03.03.003-1.0.0"
+			},
+			{
+				"label": "新原料授权状态",
+				"prop": "01.02.03.03.005-1.0.0"
+			},
+			{
+				"label": "注册号/备案号",
+				"prop": "01.02.03.03.004-1.0.0"
+			},
+			{
+				"label": "生产商",
+				"prop": "01.02.03.03.002-1.0.0"
+			},
+			{
+				"label": "标准中文名称",
+				"prop": "01.02.03.03.001-1.0.0"
+			}
+		],
+		"tableList": [{
+			"warn": "",
+			"01.02.03.03.005-1.0.0": "新原料授权状态（测试数据）",
+			"01.02.03.03.002-1.0.0": "生产商（测试数据）",
+			"01.02.03.03.003-1.0.0": "自行填报原料安全信息（测试数据）",
+			"01.02.03.03.004-1.0.0": "注册号/备案号（测试数据）",
+			"01.02.03.03.001-1.0.0": "标准中文名称（测试数据）",
+			"message": "",
+			"resultType": "0"
+		}],
+		"fileList": [],
+		"descriptionList": [],
+		"cardList": []
+	}],
+	[{
+		"showName": null,
+		"itemPid": null,
+		"showType": "description",
+		"showColIndex": null,
+		"showRowIndex": null,
+		"showWidth": null,
+		"showColIcon": null,
+		"showColBg": null,
+		"resultType": "",
+		"failResults": null,
+		"message": "",
+		"warn": "",
+		"itemValue": null,
+		"arrayIndex": null,
+		"colomn": [],
+		"tableList": [],
+		"fileList": [],
+		"descriptionList": [{
+			"showName": "膜质载体材料说明",
+			"itemPid": "01.02.03.04.001-1.0.0",
+			"showWidth": "12",
+			"showColIcon": null,
+			"showColBg": null,
+			"resultType": "0",
+			"message": "",
+			"warn": "",
+			"itemValue": "膜质载体材料说明（测试数据）"
+		}],
+		"cardList": []
+	}],
+	[{
+		"showName": "附件",
+		"itemPid": null,
+		"showType": "file",
+		"showColIndex": null,
+		"showRowIndex": null,
+		"showWidth": null,
+		"showColIcon": null,
+		"showColBg": null,
+		"resultType": "",
+		"failResults": null,
+		"message": "",
+		"warn": "",
+		"itemValue": null,
+		"arrayIndex": null,
+		"colomn": [{
+				"label": "文件名称",
+				"prop": "fileName"
+			},
+			{
+				"label": "文件格式",
+				"prop": "fileFormat"
+			},
+			{
+				"label": "文件大小",
+				"prop": "fileSize"
+			},
+			{
+				"label": "文件时间",
+				"prop": "fileTime"
+			},
+			{
+				"label": "文件地址",
+				"prop": "fileAddress"
+			}
+		],
+		"tableList": [{
+			"01.02.03.04.01.002-1.0.0": "文件名称（测试数据）",
+			"warn": "",
+			"01.02.03.04.01.005-1.0.0": "文件时间（测试数据）",
+			"01.02.03.04.01.004-1.0.0": "文件大小（测试数据）",
+			"01.02.03.04.01.003-1.0.0": "文件格式（测试数据）",
+			"01.02.03.04.01.006-1.0.0": "文件地址（测试数据）",
+			"message": "",
+			"resultType": "0"
+		}],
+		"fileList": [{
+			"fileName": "文件名称（测试数据）",
+			"fileSize": "文件大小（测试数据）",
+			"fileTime": "文件时间（测试数据）",
+			"fileFormat": "文件格式（测试数据）",
+			"fileAddress": "文件地址（测试数据）",
+			"message": null,
+			"warn": null,
+			"resultType": "0"
+		}],
+		"descriptionList": [],
+		"cardList": []
+	}],
+	[{
+		"showName": null,
+		"itemPid": null,
+		"showType": "description",
+		"showColIndex": null,
+		"showRowIndex": null,
+		"showWidth": null,
+		"showColIcon": null,
+		"showColBg": null,
+		"resultType": "",
+		"failResults": null,
+		"message": "",
+		"warn": "",
+		"itemValue": null,
+		"arrayIndex": null,
+		"colomn": [],
+		"tableList": [],
+		"fileList": [],
+		"descriptionList": [{
+			"showName": "不一致说明",
+			"itemPid": "01.02.03.04.001-1.0.0",
+			"showWidth": "12",
+			"showColIcon": null,
+			"showColBg": null,
+			"resultType": "0",
+			"message": "",
+			"warn": "",
+			"itemValue": "膜质载体材料说明（测试数据）"
+		}],
+		"cardList": []
+	}],
+	[{
+		"showName": null,
+		"itemPid": null,
+		"showType": "description",
+		"showColIndex": null,
+		"showRowIndex": null,
+		"showWidth": null,
+		"showColIcon": null,
+		"showColBg": null,
+		"resultType": "",
+		"failResults": null,
+		"message": "",
+		"warn": "",
+		"itemValue": null,
+		"arrayIndex": null,
+		"colomn": [],
+		"tableList": [],
+		"fileList": [],
+		"descriptionList": [{
+			"showName": "备注",
+			"itemPid": "01.02.03.005-1.0.0",
+			"showWidth": "12",
+			"showColIcon": null,
+			"showColBg": null,
+			"resultType": "0",
+			"message": "",
+			"warn": "",
+			"itemValue": "备注（测试数据）"
+		}],
+		"cardList": []
+	}]
+]
